@@ -1,0 +1,35 @@
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <app-brand-logo variant="inverse" />
+      <p class="site-footer__tagline">{{ site.tagline }}</p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="Mapa del sitio">
+      <h2 class="site-footer__heading">Navegación</h2>
+      <ul class="site-footer__list">
+        @for (link of site.navigation; track link.path) {
+          <li>
+            <a [routerLink]="link.path">{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <section class="site-footer__contact" aria-labelledby="footer-contacto">
+      <h2 id="footer-contacto" class="site-footer__heading">Contacto</h2>
+      <address class="site-footer__address">
+        <a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
+        @if (site.contact.phone) {
+          <a [href]="'tel:' + site.contact.phone">{{ site.contact.phone }}</a>
+        }
+        <span>{{ site.contact.city }}, {{ site.contact.country }}</span>
+        <span>{{ site.contact.schedule }}</span>
+      </address>
+    </section>
+  </div>
+
+  <div class="container site-footer__legal">
+    <p>© {{ currentYear }} {{ site.legalName }} Todos los derechos reservados.</p>
+  </div>
+</footer>

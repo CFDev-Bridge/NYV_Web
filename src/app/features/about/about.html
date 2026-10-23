@@ -1,0 +1,65 @@
+<section class="page-header">
+  <div class="container">
+    <p class="page-header__eyebrow">Nosotros</p>
+    <h1 class="page-header__title">Quiénes somos</h1>
+    <p class="page-header__lead">{{ site.about.intro }}</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="proposito-titulo">
+  <div class="container">
+    <app-section-heading headingId="proposito-titulo" eyebrow="Propósito" title="Misión y visión" />
+    <div class="grid grid--2">
+      <article class="statement">
+        <h3 class="statement__title">Misión</h3>
+        <p class="statement__text">{{ site.about.mission }}</p>
+      </article>
+      <article class="statement statement--accent">
+        <h3 class="statement__title">Visión</h3>
+        <p class="statement__text">{{ site.about.vision }}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="valores-titulo">
+  <div class="container">
+    <app-section-heading
+      headingId="valores-titulo"
+      eyebrow="Valores"
+      title="Lo que guía nuestro trabajo"
+    />
+    <dl class="values">
+      @for (value of site.about.values; track value.title) {
+        <div class="values__item">
+          <dt class="values__term">{{ value.title }}</dt>
+          <dd class="values__desc">{{ value.description }}</dd>
+        </div>
+      }
+    </dl>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="metodo-titulo">
+  <div class="container">
+    <app-section-heading
+      headingId="metodo-titulo"
+      eyebrow="Método"
+      title="Cómo abordamos cada proyecto"
+      lead="Un camino en cuatro etapas, con puntos de control y entregables definidos."
+    />
+    <ol class="steps">
+      @for (step of site.process; track step.title) {
+        <li class="steps__item">
+          <h3 class="steps__title">{{ step.title }}</h3>
+          <p class="steps__text">{{ step.description }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<app-cta-banner
+  title="Trabajemos juntos"
+  text="Si buscas un equipo técnico que entienda tu operación, conversemos sobre tu próximo proyecto."
+/>

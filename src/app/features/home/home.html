@@ -1,0 +1,75 @@
+<section class="hero" aria-labelledby="hero-titulo">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">{{ site.legalName }}</p>
+      <h1 id="hero-titulo" class="hero__title">{{ site.tagline }}</h1>
+      <p class="hero__lead">{{ site.description }}</p>
+      <div class="hero__actions">
+        <a routerLink="/contacto" class="btn btn--primary">Conversemos</a>
+        <a routerLink="/servicios" class="btn btn--ghost">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__panel hero__panel--one"></div>
+      <div class="hero__panel hero__panel--two"></div>
+      <div class="hero__panel hero__panel--three"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="propuesta-titulo">
+  <div class="container">
+    <app-section-heading
+      headingId="propuesta-titulo"
+      eyebrow="Por qué NYV"
+      title="Tecnología con criterio de negocio"
+      lead="Diseñamos cada solución para resolver un problema concreto y sostenerse en el tiempo."
+    />
+    <div class="grid grid--3">
+      @for (item of site.valuePropositions; track item.title) {
+        <article class="feature">
+          <h3 class="feature__title">{{ item.title }}</h3>
+          <p class="feature__text">{{ item.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="servicios-titulo">
+  <div class="container">
+    <app-section-heading
+      headingId="servicios-titulo"
+      eyebrow="Servicios"
+      title="Lo que hacemos"
+      lead="Desde el desarrollo de una aplicación hasta la operación completa de tu plataforma."
+    />
+    <div class="grid grid--3">
+      @for (service of site.services; track service.id) {
+        <app-service-card [service]="service" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="proceso-titulo">
+  <div class="container">
+    <app-section-heading
+      headingId="proceso-titulo"
+      eyebrow="Cómo trabajamos"
+      title="Un proceso claro de principio a fin"
+      align="center"
+    />
+    <ol class="process">
+      @for (step of site.process; track step.title; let i = $index) {
+        <li class="process__step">
+          <span class="process__number" aria-hidden="true">{{ i + 1 }}</span>
+          <h3 class="process__title">{{ step.title }}</h3>
+          <p class="process__text">{{ step.description }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<app-cta-banner />

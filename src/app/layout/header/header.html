@@ -1,0 +1,47 @@
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a routerLink="/" class="site-header__brand" (click)="closeMenu()" aria-label="NYV S.A. Inicio">
+      <app-brand-logo />
+    </a>
+
+    <button
+      type="button"
+      class="site-header__toggle"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="menu-principal"
+      (click)="toggleMenu()"
+    >
+      <span class="visually-hidden">{{ menuOpen() ? 'Cerrar menú' : 'Abrir menú' }}</span>
+      <span class="site-header__toggle-bar" aria-hidden="true"></span>
+      <span class="site-header__toggle-bar" aria-hidden="true"></span>
+      <span class="site-header__toggle-bar" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      id="menu-principal"
+      class="site-header__nav"
+      [class.site-header__nav--open]="menuOpen()"
+      aria-label="Navegación principal"
+    >
+      <ul class="site-header__list">
+        @for (link of site.navigation; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="site-header__link--active"
+              ariaCurrentWhenActive="page"
+              [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+              class="site-header__link"
+              (click)="closeMenu()"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+      <a routerLink="/contacto" class="btn btn--primary site-header__cta" (click)="closeMenu()">
+        Hablemos
+      </a>
+    </nav>
+  </div>
+</header>

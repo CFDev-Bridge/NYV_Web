@@ -1,0 +1,236 @@
+<section class="page-header">
+  <div class="container">
+    <p class="page-header__eyebrow">Contacto</p>
+    <h1 class="page-header__title">Conversemos sobre tu proyecto</h1>
+    <p class="page-header__lead">
+      Cuéntanos qué necesitas y te responderemos en horario laboral con los siguientes pasos.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-layout">
+    <aside class="contact-info" aria-labelledby="canales-titulo">
+      <h2 id="canales-titulo" class="contact-info__title">Canales de atención</h2>
+      <dl class="contact-info__list">
+        <div>
+          <dt>Correo electrónico</dt>
+          <dd>
+            <a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
+          </dd>
+        </div>
+        @if (site.contact.phone) {
+          <div>
+            <dt>Teléfono</dt>
+            <dd>
+              <a [href]="'tel:' + site.contact.phone">{{ site.contact.phone }}</a>
+            </dd>
+          </div>
+        }
+        @if (site.contact.whatsapp) {
+          <div>
+            <dt>WhatsApp</dt>
+            <dd>
+              <a
+                [href]="'https://wa.me/' + site.contact.whatsapp"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Escribir por WhatsApp
+              </a>
+            </dd>
+          </div>
+        }
+        <div>
+          <dt>Ubicación</dt>
+          <dd>
+            @if (site.contact.address) {
+              {{ site.contact.address }},
+            }
+            {{ site.contact.city }}, {{ site.contact.country }}
+          </dd>
+        </div>
+        <div>
+          <dt>Horario</dt>
+          <dd>{{ site.contact.schedule }}</dd>
+        </div>
+      </dl>
+    </aside>
+
+    <div class="contact-form-wrapper">
+      @if (status() === 'sent') {
+        <div class="alert alert--success" role="status" aria-live="polite">
+          <h2 class="alert__title">Mensaje registrado</h2>
+          <p>Gracias por escribirnos. Te responderemos a la brevedad en el correo indicado.</p>
+          <button type="button" class="btn btn--ghost" (click)="reset()">
+            Enviar otro mensaje
+          </button>
+        </div>
+      } @else {
+        <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+          <h2 class="contact-form__title">Escríbenos</h2>
+
+          @if (status() === 'error') {
+            <div class="alert alert--error" role="alert">
+              No pudimos enviar tu mensaje. Inténtalo nuevamente o escríbenos directamente a
+              <a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a
+              >.
+            </div>
+          }
+
+          <div class="contact-form__grid">
+            <div class="field">
+              <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
+              <input
+                id="nombre"
+                type="text"
+                formControlName="name"
+                autocomplete="name"
+                maxlength="80"
+                required
+                [attr.aria-invalid]="showError('name')"
+                [attr.aria-describedby]="showError('name') ? 'nombre-error' : null"
+              />
+              @if (showError('name')) {
+                <p id="nombre-error" class="field__error">
+                  Ingresa tu nombre (mínimo 2 caracteres).
+                </p>
+              }
+            </div>
+
+            <div class="field">
+              <label for="correo">Correo electrónico <span aria-hidden="true">*</span></label>
+              <input
+                id="correo"
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                inputmode="email"
+                maxlength="120"
+                required
+                [attr.aria-invalid]="showError('email')"
+                [attr.aria-describedby]="showError('email') ? 'correo-error' : null"
+              />
+              @if (showError('email')) {
+                <p id="correo-error" class="field__error">Ingresa un correo electrónico válido.</p>
+              }
+            </div>
+
+            <div class="field">
+              <label for="telefono">Teléfono</label>
+              <input
+                id="telefono"
+                type="tel"
+                formControlName="phone"
+                autocomplete="tel"
+                inputmode="tel"
+                maxlength="20"
+                [attr.aria-invalid]="showError('phone')"
+                [attr.aria-describedby]="showError('phone') ? 'telefono-error' : null"
+              />
+              @if (showError('phone')) {
+                <p id="telefono-error" class="field__error">
+                  Usa solo números, espacios, guiones o paréntesis (7 a 20 caracteres).
+                </p>
+              }
+            </div>
+
+            <div class="field">
+              <label for="empresa">Empresa o institución</label>
+              <input
+                id="empresa"
+                type="text"
+                formControlName="company"
+                autocomplete="organization"
+                maxlength="100"
+              />
+            </div>
+
+            <div class="field field--full">
+              <label for="asunto">Asunto <span aria-hidden="true">*</span></label>
+              <select
+                id="asunto"
+                formControlName="subject"
+                required
+                [attr.aria-invalid]="showError('subject')"
+                [attr.aria-describedby]="showError('subject') ? 'asunto-error' : null"
+              >
+                <option value="" disabled>Selecciona un servicio</option>
+                @for (subject of subjects; track subject) {
+                  <option [value]="subject">{{ subject }}</option>
+                }
+              </select>
+              @if (showError('subject')) {
+                <p id="asunto-error" class="field__error">Selecciona el tema de tu consulta.</p>
+              }
+            </div>
+
+            <div class="field field--full">
+              <label for="mensaje">Mensaje <span aria-hidden="true">*</span></label>
+              <textarea
+                id="mensaje"
+                formControlName="message"
+                rows="6"
+                maxlength="1500"
+                required
+                [attr.aria-invalid]="showError('message')"
+                [attr.aria-describedby]="
+                  showError('message') ? 'mensaje-ayuda mensaje-error' : 'mensaje-ayuda'
+                "
+              ></textarea>
+              <p id="mensaje-ayuda" class="field__hint">
+                Entre 20 y 1500 caracteres. Describe el contexto, el objetivo y los plazos si los
+                tienes.
+              </p>
+              @if (showError('message')) {
+                <p id="mensaje-error" class="field__error">
+                  Escribe un mensaje de al menos 20 caracteres.
+                </p>
+              }
+            </div>
+
+            <div class="field field--full field--check">
+              <input
+                id="consentimiento"
+                type="checkbox"
+                formControlName="consent"
+                required
+                [attr.aria-invalid]="showError('consent')"
+                [attr.aria-describedby]="showError('consent') ? 'consentimiento-error' : null"
+              />
+              <label for="consentimiento">
+                Autorizo a {{ site.legalName }} a utilizar estos datos únicamente para responder mi
+                consulta.
+                <span aria-hidden="true">*</span>
+              </label>
+              @if (showError('consent')) {
+                <p id="consentimiento-error" class="field__error">
+                  Debes aceptar el uso de tus datos.
+                </p>
+              }
+            </div>
+
+            <!-- Campo trampa para bots. Oculto a personas y lectores de pantalla. -->
+            <div class="field field--honeypot" aria-hidden="true">
+              <label for="sitio-web">Sitio web</label>
+              <input
+                id="sitio-web"
+                type="text"
+                formControlName="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <div class="contact-form__actions">
+            <button type="submit" class="btn btn--primary" [disabled]="status() === 'sending'">
+              {{ status() === 'sending' ? 'Enviando…' : 'Enviar mensaje' }}
+            </button>
+            <p class="field__hint">Los campos marcados con * son obligatorios.</p>
+          </div>
+        </form>
+      }
+    </div>
+  </div>
+</section>
