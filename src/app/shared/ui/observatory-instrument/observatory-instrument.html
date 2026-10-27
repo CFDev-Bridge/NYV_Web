@@ -60,10 +60,8 @@
 
   <g class="instrument__beacons">
     @for (b of beacons; track b.cx) {
-      <circle
-        [attr.cx]="b.cx"
-        [attr.cy]="b.cy"
-        [attr.r]="b.r"
+      <polygon
+        [attr.points]="beaconShape(b)"
         class="instrument__beacon"
         [style.animation-delay.s]="b.delay"
       />

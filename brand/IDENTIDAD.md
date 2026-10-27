@@ -11,11 +11,12 @@ Versión 1.0, octubre de 2026. Propuesta para selección; la identidad definitiv
 
 ## Símbolo
 
-Una N construida con dos astas y una diagonal. La diagonal es el nexo entre las dos astas. La contraforma superior derecha forma una V, la visión. Dentro de ella, un punto en color señal: lo observado.
+Una N construida con dos astas y una diagonal: el nexo. La contraforma superior derecha, entre la diagonal y el asta, se convierte en una V sólida en color señal: la visión. Un canal de separación mantiene las dos letras legibles; la Y del nombre queda implícita en el cruce. El vértice de la V, apuntando hacia abajo, es el punto de observación.
 
 - Retícula de 64 × 64. Asta (a) = 8 unidades. Astas en x 8–16 y 48–56, de y 8 a 56.
 - Diagonal: paralelogramo de ancho perpendicular igual a **a**, vértices (8,8) (19.3,8) (56,44.7) (56,56) (44.7,56) (8,19.3).
-- Punto: centro (41, 18), radio 4.2 (≈ 1.05 a). Al tamaño del encabezado web (37 px) mide 5 px de diámetro.
+- V: triángulo con vértices (18.1,11) (45,11) (45,37.9), separado de la N por un canal de 3 unidades (0.375 a).
+- Versión monocroma: la V se dibuja en contorno de 1.6 unidades, nunca rellena, para que la N no se convierta en bloque.
 - Archivos: `logo/nyv-simbolo.svg`, `logo/nyv-simbolo-inverso.svg`, `logo/nyv-simbolo-mono.svg`.
 
 ## Logotipo y bloques
@@ -43,7 +44,7 @@ Una N construida con dos astas y una diagonal. La diagonal es el nexo entre las 
 
 ### Usos incorrectos
 
-No estirar ni comprimir. No rotar. No aplicar degradados, sombras ni contornos. No cambiar el color del punto a otro distinto del color señal. No separar el punto del símbolo. No reconstruir el logotipo con otra tipografía. No colocar el bloque sobre fotografías sin una zona de contraste.
+No estirar ni comprimir. No rotar. No aplicar degradados, sombras ni contornos. No cambiar el color de la V a otro distinto del color señal. No rellenar la V en tinta ni eliminar el canal. No reconstruir el logotipo con otra tipografía. No colocar el bloque sobre fotografías sin una zona de contraste.
 
 ## Líneas de negocio
 

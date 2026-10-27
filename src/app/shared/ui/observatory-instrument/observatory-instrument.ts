@@ -77,6 +77,13 @@ export class ObservatoryInstrument implements AfterViewInit, OnDestroy {
     return { x1: from.cx, y1: from.cy, x2: to.cx, y2: to.cy, delay: to.delay };
   });
 
+  /** Baliza como pequeña V apuntando hacia abajo, la misma forma del símbolo. */
+  protected beaconShape(b: Beacon): string {
+    const w = b.r * 1.25;
+    const h = b.r * 1.15;
+    return `${b.cx - w},${b.cy - h * 0.55} ${b.cx + w},${b.cy - h * 0.55} ${b.cx},${b.cy + h}`;
+  }
+
   ngAfterViewInit(): void {
     if (!this.document.defaultView || typeof IntersectionObserver === 'undefined') {
       return;
