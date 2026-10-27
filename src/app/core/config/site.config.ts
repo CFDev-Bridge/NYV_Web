@@ -215,29 +215,29 @@ export const SITE_CONTENT: SiteConfig = {
     },
     {
       id: 'tableros-seguimiento',
-      name: 'Tableros de control de obras públicas, atención social y seguridad',
+      name: 'Tableros de control georreferenciados de obras públicas, atención social y seguridad',
       clientType: 'Gobierno autónomo descentralizado municipal',
       role: 'Implementación',
       summary:
-        'Tableros de control para el seguimiento del avance de obras públicas, proyectos de ' +
-        'atención social y seguridad: integración de las fuentes de cada área, indicadores de ' +
-        'avance físico y presupuestario, alertas por desvío y vistas consolidadas para la ' +
-        'dirección.',
-      stack: ['Oracle Database', 'SQL', 'Visualización de datos'],
+        'Tableros de control con georreferencia para el seguimiento del avance de obras públicas, ' +
+        'proyectos de atención social y seguridad: cada intervención se ubica en el territorio ' +
+        'sobre una geodatabase corporativa en Oracle, con indicadores de avance físico y ' +
+        'presupuestario, alertas por desvío y vistas consolidadas para la dirección.',
+      stack: ['ArcGIS', 'Geodatabase Oracle', 'SQL', 'Visualización de datos'],
       lines: ['data', 'consulting'],
     },
     {
       id: 'ia-seguimiento',
-      name: 'Herramienta con inteligencia artificial para el seguimiento institucional',
+      name: 'ObrasIA, asistente con inteligencia artificial para el seguimiento institucional',
       clientType: 'Gobierno autónomo descentralizado municipal',
       role: 'Implementación',
       summary:
-        'Herramienta con inteligencia artificial especializada en el seguimiento de obras ' +
-        'públicas, atención social y seguridad: consulta de la información de seguimiento en ' +
-        'lenguaje natural, resúmenes de estado y detección de desvíos para apoyar la toma de ' +
-        'decisiones.',
-      stack: ['Python', 'Inteligencia artificial', 'Oracle Database'],
-      lines: ['ai', 'data'],
+        'Aplicación web progresiva (PWA) con un asistente de inteligencia artificial especializado ' +
+        'en el seguimiento de obras públicas, atención social y seguridad: consulta de la ' +
+        'información de seguimiento en lenguaje natural, resúmenes de estado y detección de ' +
+        'desvíos, disponible desde el escritorio y el teléfono.',
+      stack: ['PWA', 'Inteligencia artificial', 'Python', 'JavaScript', 'Oracle Database'],
+      lines: ['ai', 'software', 'data'],
     },
   ],
   experienceNote:
