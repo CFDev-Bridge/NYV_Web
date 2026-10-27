@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 114" width="95" height="114" role="img" aria-label="NYV">
+  <g transform="translate(15.5 0)">
+  <rect x="8" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <rect x="47" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  </g>
+  <path d="M13.34 106L8.14 106L8.14 78L18.18 78L23.74 102.40L24.46 102.40L24.46 78L29.66 78L29.66 106L19.62 106L14.06 81.60L13.34 81.60L13.34 106ZM50.22 106L44.94 106L44.94 96.36L35.42 78L41.30 78L47.22 90L47.94 90L53.86 78L59.74 78L50.22 96.36L50.22 106ZM79.74 106L70.70 106L63.58 78L69.02 78L74.94 102.60L75.50 102.60L81.42 78L86.86 78L79.74 106Z" fill="#f6f3ec"/>
+</svg>

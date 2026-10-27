@@ -1,0 +1,572 @@
+<title>Identidad NYV</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: guía editorial en una columna de 72rem, bandas de noche para portada, color y aplicaciones; retícula de 12 para especímenes. */
+:root {
+  --bg: #f6f3ec; --bg-2: #ece8dd; --fg: #121b2b; --fg-2: #46516a; --line: #d7d1c2;
+  --night: #0b1526; --night-2: #112038; --night-fg: #eef2f7; --night-fg-2: #a9b6c9; --night-line: rgb(169 182 201 / .18);
+  --signal: #0e9ab8; --signal-text: #0a7a93; --signal-bright: #3cc7e6;
+  --card: #ffffff;
+  --display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0b1526; --bg-2: #112038; --fg: #eef2f7; --fg-2: #a9b6c9; --line: rgb(169 182 201 / .18);
+  --signal: #3cc7e6; --signal-text: #3cc7e6; --card: #112038; color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #0b1526; --bg-2: #112038; --fg: #eef2f7; --fg-2: #a9b6c9; --line: rgb(169 182 201 / .18);
+  --signal: #3cc7e6; --signal-text: #3cc7e6; --card: #112038; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 .5em; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 1.6rem + 3vw, 4.2rem); letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.4rem); }
+h3 { font-size: 1.2rem; font-weight: 600; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+a { color: var(--signal-text); }
+.wrap { width: min(100% - 32px, 72rem); margin-inline: auto; }
+.band { padding-block: 4.5rem; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.band + .band { border-top: 1px solid var(--line); }
+.night { background: var(--night); color: var(--night-fg); --fg: var(--night-fg); --fg-2: var(--night-fg-2); --line: var(--night-line); --card: var(--night-2); --signal-text: var(--signal-bright); }
+.muted { color: var(--fg-2); }
+.lead { font-size: 1.2rem; max-width: 62ch; color: var(--fg-2); }
+.measure { max-width: 66ch; }
+.cols { display: grid; gap: 2rem; }
+@media (min-width: 52rem) { .cols--2 { grid-template-columns: 1fr 1fr; } .cols--3 { grid-template-columns: repeat(3, 1fr); } .cols--side { grid-template-columns: 1fr 2fr; } }
+.cols > * { min-width: 0; }
+.spec { border: 1px solid var(--line); border-radius: 12px; padding: 1.5rem; background: var(--card); min-width: 0; }
+.spec svg, .spec img { max-width: 100%; }
+.spec--night { background: var(--night); color: var(--night-fg); border-color: var(--night-line); }
+.spec--paper { background: #f6f3ec; color: #121b2b; border-color: #d7d1c2; }
+.spec__label { display: block; font: 600 .78rem/1.4 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); margin-bottom: 1rem; }
+.spec--night .spec__label { color: var(--night-fg-2); }
+.spec--paper .spec__label { color: #46516a; }
+.logo { display: block; width: 100%; height: auto; }
+.cover { display: grid; gap: 3rem; align-items: end; }
+@media (min-width: 52rem) { .cover { grid-template-columns: 1.2fr 1fr; } }
+.cover__meta { display: grid; gap: .3rem; font-size: .95rem; color: var(--night-fg-2); border-top: 1px solid var(--night-line); padding-top: 1rem; }
+.cover__meta b { color: var(--night-fg); font-weight: 600; }
+.cover-mark { width: min(100%, 26rem); }
+dl.facts { display: grid; grid-template-columns: 1fr; gap: .25rem 1.5rem; margin: 0; }
+@media (min-width: 40rem) { dl.facts { grid-template-columns: max-content 1fr; gap: .5rem 1.5rem; } }
+dl.facts dd + dt { margin-top: .75rem; }
+@media (min-width: 40rem) { dl.facts dd + dt { margin-top: 0; } }
+dl.facts dt { font-weight: 600; } dl.facts dd { margin: 0; color: var(--fg-2); }
+.construct { width: 100%; height: auto; }
+.construct text { font: 500 3.2px var(--body); fill: currentColor; }
+.alts { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 1rem; }
+.alts .spec { padding: 1rem; }
+.alts svg { width: 100%; height: auto; }
+.alts p { font-size: .9rem; margin: .75rem 0 0; }
+.sizes { display: flex; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; }
+.sizes > div { max-width: 100%; }
+.sizes figure { margin: 0; display: grid; gap: .4rem; justify-items: center; font-size: .78rem; color: var(--fg-2); }
+.sizes svg { display: block; }
+.clear { position: relative; display: inline-block; padding: 14%; border: 1px dashed var(--signal); border-radius: 4px; }
+.clear svg { width: 100%; display: block; }
+.clear i { position: absolute; font: 500 .75rem var(--body); color: var(--signal-text); }
+.dont { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1rem; }
+.dont figure { margin: 0; display: grid; gap: .5rem; font-size: .85rem; color: var(--fg-2); }
+.dont .box { aspect-ratio: 4/3; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 8px; background: var(--card); overflow: hidden; position: relative; }
+.dont .box::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top right, transparent calc(50% - 1px), #b3261e, transparent calc(50% + 1px)); opacity: .9; }
+.dont .box svg { width: 70%; }
+.lines-list { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+.lines-list li { font-family: var(--display); font-size: 1.6rem; letter-spacing: .07em; font-weight: 700; display: flex; gap: .5em; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: .6rem; }
+.lines-list span { font-weight: 500; letter-spacing: 0; }
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem; }
+.sw { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--card); }
+.sw__chip { height: 5.5rem; }
+.sw__body { padding: .8rem 1rem; display: grid; gap: .15rem; font-size: .9rem; }
+.sw__body b { font-family: var(--display); font-weight: 600; }
+.sw__body code { font: 500 .85rem/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--fg-2); }
+.sw__body small { color: var(--fg-2); }
+.ratio { display: flex; height: 2rem; border-radius: 999px; overflow: hidden; margin: 1.5rem 0 .5rem; }
+.pairs { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
+.pair { padding: 1rem 1.2rem; border-radius: 10px; font-weight: 500; display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+.pair small { opacity: .75; font-variant-numeric: tabular-nums; }
+.type-spec { font-family: var(--display); font-weight: 700; font-size: clamp(2.4rem, 7vw, 5.5rem); line-height: 1; letter-spacing: -0.03em; margin: 0 0 1rem; overflow-wrap: anywhere; }
+.type-alpha { font-family: var(--display); font-size: 1.4rem; letter-spacing: .02em; color: var(--fg-2); overflow-wrap: anywhere; }
+.type-body { font-size: 1.05rem; }
+.scale { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: .6rem; }
+.scale li { display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--line); padding-bottom: .5rem; }
+.scale small { font-variant-numeric: tabular-nums; color: var(--fg-2); min-width: 9ch; }
+.elements { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+.elements svg { width: 100%; height: auto; display: block; }
+.apps { display: grid; gap: 1.5rem; }
+.apps > * { min-width: 0; max-width: 100%; }
+@media (min-width: 52rem) { .apps { grid-template-columns: repeat(2, 1fr); } }
+.browser { min-width: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #f6f3ec; color: #121b2b; }
+.browser__bar { display: flex; align-items: center; gap: .5rem; padding: .6rem .9rem; background: #ece8dd; border-bottom: 1px solid #d7d1c2; font-size: .8rem; color: #46516a; }
+.browser__bar i { width: .6rem; height: .6rem; border-radius: 50%; background: #d7d1c2; display: inline-block; }
+.browser__url { margin-left: .5rem; padding: .25rem .7rem; border-radius: 999px; background: #f6f3ec; flex: 1; }
+.site-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 1rem 1.4rem; gap: 1rem; min-width: 0; }
+.site-head svg { height: 1.9rem; width: auto; max-width: 100%; flex: 0 1 auto; }
+.site-head nav { display: none; gap: 1.2rem; font-size: .9rem; color: #46516a; }
+@media (min-width: 36rem) { .site-head nav { display: flex; } }
+.site-head nav b { color: #121b2b; font-weight: 500; box-shadow: inset 0 -1.5px 0 #0e9ab8; }
+.site-hero { background: linear-gradient(180deg, #0b1526, #112038); color: #eef2f7; padding: 2.2rem 1.4rem 2.6rem; }
+.site-hero h3 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); font-weight: 600; margin: 0 0 .6rem; max-width: 16ch; }
+.site-hero h3 em { font-style: normal; color: #3cc7e6; }
+.site-hero p { color: #a9b6c9; font-size: .95rem; max-width: 46ch; margin: 0; }
+.cards { display: grid; gap: 1.5rem; }
+.card { aspect-ratio: 85 / 55; border-radius: 10px; padding: 1.4rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 18px 40px -24px rgb(18 27 43 / .45); }
+.card--front { background: #0b1526; color: #f6f3ec; }
+.card--back { background: #f6f3ec; color: #121b2b; border: 1px solid #d7d1c2; }
+.card svg { height: 2.2rem; width: auto; }
+.card__name { font-family: var(--display); font-weight: 600; font-size: 1.1rem; }
+.card__role, .card__contact { font-size: .82rem; color: inherit; opacity: .8; line-height: 1.45; overflow-wrap: anywhere; }
+.card__rule { height: 1px; background: currentColor; opacity: .25; margin: .6rem 0; position: relative; }
+.card__rule::after { content: ''; position: absolute; right: 0; top: -2.5px; width: 6px; height: 6px; border-radius: 50%; background: #0e9ab8; opacity: 1; }
+.icons { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+.icons svg { display: block; border-radius: 22%; }
+.sig { overflow-wrap: anywhere; font-family: var(--body); font-size: .9rem; line-height: 1.5; padding: 1.2rem 1.4rem; border-left: 2px solid var(--signal); background: var(--card); border-radius: 0 8px 8px 0; }
+.sig b { font-family: var(--display); font-size: 1rem; }
+.sig .sig__brand { display: flex; gap: .5rem; align-items: center; margin-bottom: .6rem; }
+.sig .sig__brand svg { height: 1.5rem; width: auto; }
+.slide { aspect-ratio: 16/9; border-radius: 10px; background: #0b1526; color: #eef2f7; position: relative; overflow: hidden; padding: 1.6rem; display: flex; flex-direction: column; justify-content: flex-end; }
+.slide svg.ring { position: absolute; right: -18%; top: -30%; width: 70%; opacity: .5; }
+.slide h3 { font-weight: 600; font-size: clamp(1.3rem, 3vw, 2rem); margin: 0 0 .3rem; position: relative; max-width: 18ch; }
+.slide p { color: #a9b6c9; font-size: .85rem; margin: 0; position: relative; }
+.slide .slide__mark { position: absolute; top: 1.4rem; left: 1.6rem; height: 1.6rem; width: auto; }
+.files { display: grid; gap: .5rem; margin: 0; padding: 0; list-style: none; font: 500 .9rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.files li { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line); padding: .4rem 0; flex-wrap: wrap; }
+.files span { font-family: var(--body); color: var(--fg-2); font-weight: 400; }
+.note { padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: 10px; background: var(--card); font-size: .95rem; }
+.toc { display: flex; flex-wrap: wrap; gap: .5rem .9rem; font-size: .9rem; margin-top: 1.5rem; }
+.toc a { color: var(--night-fg-2); text-decoration: none; border-bottom: 1px solid var(--night-line); }
+.toc a:hover { color: var(--night-fg); }
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) { .cover-mark { animation: rise .9s cubic-bezier(.16,1,.3,1) both; } @keyframes rise { from { opacity: 0; transform: translateY(14px); } } }
+</style>
+
+<header class="band night" id="portada">
+  <div class="wrap cover">
+    <div>
+      <div class="cover-mark"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="#f6f3ec"/>
+  <rect x="47" y="8" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="#f6f3ec"/>
+</svg></div>
+      <h1 style="margin-top:2rem">Sistema de identidad</h1>
+      <p class="lead" style="color:var(--night-fg-2)">Nexo y Visión. La empresa que observa y anticipa: convierte datos en visión y decisiones.</p>
+      <nav class="toc" aria-label="Secciones">
+        <a href="#fundamento">Fundamento</a><a href="#simbolo">Símbolo</a><a href="#versiones">Versiones</a><a href="#lineas">Líneas</a><a href="#color">Color</a><a href="#tipografia">Tipografía</a><a href="#elementos">Elementos</a><a href="#aplicaciones">Aplicaciones</a><a href="#voz">Voz</a><a href="#archivos">Archivos</a>
+      </nav>
+    </div>
+    <div class="cover__meta">
+      <div><b>NYV S.A.S.</b> · Ambato, Tungurahua, Ecuador</div>
+      <div>Versión 1.0 · octubre de 2026</div>
+      <div>Estado: <b>propuesta para selección</b>. La identidad queda confirmada con la aprobación del fundador.</div>
+    </div>
+  </div>
+</header>
+
+<section class="band" id="fundamento">
+  <div class="wrap cols cols--side">
+    <div><h2>Fundamento</h2><p class="muted">Lo que la identidad debe expresar y de dónde sale.</p></div>
+    <div class="measure">
+      <dl class="facts">
+        <dt>Nombre</dt><dd>NYV, siempre en mayúsculas. Marca corta y única, casa madre de líneas especializadas.</dd>
+        <dt>Significado</dt><dd>Nexo y Visión. Nexo: conecta sistemas, datos y personas. Visión: usa inteligencia artificial y análisis para ver más lejos.</dd>
+        <dt>Dirección</dt><dd>El Observatorio. Precisión de instrumento, anticipación, cercanía con empresas e instituciones públicas.</dd>
+        <dt>Evita</dt><dd>El brillo genérico de "startup de IA" (degradados violeta, destellos) y la frialdad corporativa de la consultoría tradicional.</dd>
+      </dl>
+      <div class="note" style="margin-top:1.5rem"><b>Estado legal.</b> La marca se registra en SENADI como denominativa, solo el texto "NYV". El símbolo de este sistema es un activo de uso y no queda protegido por ese registro. Si se consolida, se registra después como marca figurativa o mixta en un expediente aparte, sin tocar la denominativa.</div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="simbolo">
+  <div class="wrap">
+    <div class="cols cols--side">
+      <div><h2>Símbolo</h2><p class="muted">Una N que contiene la V. Dentro, el punto observado.</p></div>
+      <div class="measure">
+        <p>Dos astas unidas por una diagonal: el <b>nexo</b>. La contraforma superior derecha, entre la diagonal y el asta, dibuja una <b>V</b>: la visión. En ella se asienta un punto en color señal, <b>lo observado</b>: el dato que el instrumento ilumina. Las tres letras del nombre están en un solo glifo sin forzar ninguna.</p>
+        <p>Geometría medida, sin curvas salvo el punto. Astas de 9 unidades sobre una retícula de 64; la diagonal conserva el mismo grosor perpendicular. El punto mide tres cuartos del asta, suficiente para leerse a 24 px y desaparecer con dignidad a 16 px, donde la N sigue sola.</p>
+      </div>
+    </div>
+    <div class="cols cols--2" style="margin-top:3rem">
+      <div class="spec spec--paper">
+        <span class="spec__label">Construcción · retícula 64 × 64 · a = 9</span>
+        <svg class="construct" viewBox="-6 -6 84 76" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Construcción del símbolo sobre retícula">
+          <defs><pattern id="g" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8 0H0V8" fill="none" stroke="#d7d1c2" stroke-width=".4"/></pattern></defs>
+          <rect x="0" y="0" width="64" height="64" fill="url(#g)" stroke="#b9b2a1" stroke-width=".5"/>
+          <g opacity=".92">
+            <rect x="8" y="8" width="9" height="48" fill="#121b2b"/>
+            <rect x="47" y="8" width="9" height="48" fill="#121b2b"/>
+            <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+            <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+          </g>
+          <polygon points="20.7,8 47,8 47,34.3" fill="none" stroke="#0e9ab8" stroke-width=".6" stroke-dasharray="1.5 1.2"/>
+          <line x1="8" y1="60" x2="17" y2="60" stroke="#0a7a93" stroke-width=".6"/><text x="12.5" y="66" text-anchor="middle" fill="#0a7a93">a</text>
+          <line x1="47" y1="60" x2="56" y2="60" stroke="#0a7a93" stroke-width=".6"/><text x="51.5" y="66" text-anchor="middle" fill="#0a7a93">a</text>
+          <line x1="60" y1="8" x2="60" y2="56" stroke="#0a7a93" stroke-width=".6"/><text x="63" y="33" fill="#0a7a93">48</text>
+          <text x="31" y="5.5" fill="#0a7a93" text-anchor="middle">contraforma V</text>
+          <line x1="40.8" y1="17.2" x2="40.8" y2="-1" stroke="#0e9ab8" stroke-width=".4" stroke-dasharray="1 1"/><text x="42" y="-2" fill="#0a7a93">ø 0,75 a</text>
+          <text x="-4" y="-2" fill="#46516a">0</text><text x="60" y="-2" fill="#46516a">64</text>
+        </svg>
+      </div>
+      <div class="spec">
+        <span class="spec__label">Exploración · direcciones descartadas</span>
+        <div class="alts">
+          <div class="spec spec--paper">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="#121b2b" stroke-width="3.2"/><circle cx="32" cy="32" r="12" fill="none" stroke="#121b2b" stroke-width="2.4" opacity=".55"/><circle cx="41" cy="23" r="4.6" fill="#0e9ab8"/></svg>
+            <p><b>A · Lente.</b> Anillo con el punto observado. Clara pero genérica: cualquier marca de visión o cámara la usa.</p>
+          </div>
+          <div class="spec spec--paper">
+            <svg viewBox="0 0 64 64"><rect x="8" y="8" width="9" height="48" fill="#121b2b"/><rect x="47" y="8" width="9" height="48" fill="#121b2b"/><polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/><circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/></svg>
+            <p><b>B · Nexo y Visión.</b> La N con la V en negativo y el punto. Seleccionada para desarrollo: una idea, tres letras, propia.</p>
+          </div>
+          <div class="spec spec--paper">
+            <svg viewBox="0 0 64 64"><line x1="6" y1="40" x2="58" y2="40" stroke="#121b2b" stroke-width="2.4"/><circle cx="44" cy="24" r="4.6" fill="#0e9ab8"/><path d="M12 40 Q 32 20 52 40" fill="none" stroke="#121b2b" stroke-width="2" opacity=".5"/></svg>
+            <p><b>C · Horizonte.</b> Línea y astro naciente. Poética, pero lejana del nombre y de la precisión que pide el Observatorio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="versiones">
+  <div class="wrap">
+    <div class="cols cols--side">
+      <div><h2>Versiones del logo</h2><p class="muted">Cuatro formas, tres colores, una regla de espacio.</p></div>
+      <p class="measure">El <b>bloque horizontal</b> es la versión principal. La <b>vertical</b> sirve en formatos cuadrados y sellos. El <b>símbolo</b> solo cuando la marca ya está presente o el espacio es mínimo (ícono, favicon, avatar). El <b>logotipo</b> solo cuando el contexto exige la marca denominativa tal cual se registra.</p>
+    </div>
+    <div class="cols cols--2" style="margin-top:3rem">
+      <div class="spec spec--paper"><span class="spec__label">Horizontal · positiva</span><div style="max-width:22rem"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="#121b2b"/>
+  <rect x="47" y="8" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="#121b2b"/>
+</svg></div></div>
+      <div class="spec spec--night"><span class="spec__label">Horizontal · inversa</span><div style="max-width:22rem"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="#f6f3ec"/>
+  <rect x="47" y="8" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="#f6f3ec"/>
+</svg></div></div>
+      <div class="spec spec--paper"><span class="spec__label">Vertical · símbolo · logotipo</span><div class="sizes" style="align-items:center"><div style="width:7rem"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 114" role="img" aria-label="NYV">
+  <g transform="translate(15.5 0)">
+  <rect x="8" y="8" fill="#121b2b"/>
+  <rect x="47" y="8" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+  </g>
+  <path d="M13.34 106L8.14 106L8.14 78L18.18 78L23.74 102.40L24.46 102.40L24.46 78L29.66 78L29.66 106L19.62 106L14.06 81.60L13.34 81.60L13.34 106ZM50.22 106L44.94 106L44.94 96.36L35.42 78L41.30 78L47.22 90L47.94 90L53.86 78L59.74 78L50.22 96.36L50.22 106ZM79.74 106L70.70 106L63.58 78L69.02 78L74.94 102.60L75.50 102.60L81.42 78L86.86 78L79.74 106Z" fill="#121b2b"/>
+</svg></div><div style="width:5rem"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="#121b2b"/>
+  <rect x="47" y="8" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+</svg></div><div style="width:9rem"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 56" role="img" aria-label="NYV">
+  <path d="M15.43 48L8 48L8 8.00L22.34 8.00L30.29 42.86L31.31 42.86L31.31 8.00L38.74 8.00L38.74 48L24.40 48L16.46 13.14L15.43 13.14L15.43 48ZM68.11 48L60.57 48L60.57 34.23L46.97 8.00L55.37 8.00L63.83 25.14L64.86 25.14L73.31 8.00L81.71 8.00L68.11 34.23L68.11 48ZM110.29 48L97.37 48L87.20 8.00L94.97 8.00L103.43 43.14L104.23 43.14L112.69 8.00L120.46 8.00L110.29 48Z" fill="#121b2b"/>
+</svg></div></div></div>
+      <div class="spec spec--night"><span class="spec__label">Monocroma · un solo color</span><div class="sizes" style="align-items:center;color:#3cc7e6"><div style="width:5rem"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="currentColor"/>
+  <rect x="47" y="8" fill="currentColor"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="currentColor"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="currentColor"/>
+</svg></div><div style="width:14rem"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="currentColor"/>
+  <rect x="47" y="8" fill="currentColor"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="currentColor"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="currentColor"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="currentColor"/>
+</svg></div></div></div>
+    </div>
+    <div class="cols cols--3" style="margin-top:1.5rem">
+      <div class="spec spec--paper">
+        <span class="spec__label">Espacio de protección = a</span>
+        <div class="clear" style="width:min(100%,16rem)"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="#121b2b"/>
+  <rect x="47" y="8" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="#121b2b"/>
+</svg><i style="top:-1.1rem;left:50%;transform:translateX(-50%)">a</i><i style="left:-1rem;top:50%;transform:translateY(-50%)">a</i></div>
+        <p class="muted" style="font-size:.9rem;margin:1rem 0 0">Alrededor de cualquier versión, una vez la anchura del asta medida en el tamaño de uso.</p>
+      </div>
+      <div class="spec spec--paper">
+        <span class="spec__label">Tamaños mínimos</span>
+        <div class="sizes">
+          <figure><svg viewBox="0 0 64 64" width="16" height="16">
+  <rect x="8" y="8" width="9" height="48" fill="#121b2b"/>
+  <rect x="47" y="8" width="9" height="48" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+</svg><figcaption>16 px</figcaption></figure>
+          <figure><svg viewBox="0 0 64 64" width="24" height="24">
+  <rect x="8" y="8" width="9" height="48" fill="#121b2b"/>
+  <rect x="47" y="8" width="9" height="48" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+</svg><figcaption>24 px</figcaption></figure>
+          <figure><svg viewBox="0 0 64 64" width="32" height="32">
+  <rect width="64" height="64" rx="14" fill="#0b1526"/>
+  <g transform="translate(9 9) scale(0.72)">
+  <rect x="8" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <rect x="47" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  </g>
+</svg><figcaption>favicon 32</figcaption></figure>
+          <figure><svg viewBox="0 0 199 64" width="75" height="24">
+  <rect x="8" y="8" width="9" height="48" fill="#121b2b"/>
+  <rect x="47" y="8" width="9" height="48" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="#121b2b"/>
+</svg><figcaption>24 px alto</figcaption></figure>
+        </div>
+        <p class="muted" style="font-size:.9rem;margin:1rem 0 0">Símbolo: 16 px / 5 mm. Horizontal: 24 px de alto / 8 mm. Logotipo: 12 px de mayúsculas.</p>
+      </div>
+      <div class="spec spec--paper">
+        <span class="spec__label">Usos incorrectos</span>
+        <div class="dont">
+          <figure><div class="box"><svg viewBox="0 0 64 64" style="transform:scaleX(1.6)">
+  <rect x="8" y="8" width="9" height="48" fill="#121b2b"/>
+  <rect x="47" y="8" width="9" height="48" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+</svg></div><figcaption>Estirar</figcaption></figure>
+          <figure><div class="box"><svg viewBox="0 0 64 64" style="transform:rotate(-20deg)">
+  <rect x="8" y="8" width="9" height="48" fill="#121b2b"/>
+  <rect x="47" y="8" width="9" height="48" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+</svg></div><figcaption>Rotar</figcaption></figure>
+          <figure><div class="box"><svg viewBox="0 0 64 64"><defs><linearGradient id="bad" x1="0" x2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect x="8" y="8" width="9" height="48" fill="url(#bad)"/><rect x="47" y="8" width="9" height="48" fill="url(#bad)"/><polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="url(#bad)"/><circle cx="40.8" cy="17.2" r="3.4" fill="#f59e0b"/></svg></div><figcaption>Degradado y otro acento</figcaption></figure>
+          <figure><div class="box"><svg viewBox="0 0 64 64" style="filter:drop-shadow(3px 4px 2px rgb(0 0 0 / .5))">
+  <rect x="8" y="8" width="9" height="48" fill="#121b2b"/>
+  <rect x="47" y="8" width="9" height="48" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+</svg></div><figcaption>Sombra</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="lineas">
+  <div class="wrap cols cols--side">
+    <div><h2>Líneas de negocio</h2><p class="muted">Una casa madre; las líneas no tienen símbolo ni color propios.</p></div>
+    <div>
+      <ul class="lines-list">
+        <li>NYV <span>Software</span></li><li>NYV <span>AI</span></li><li>NYV <span>Data</span></li><li>NYV <span>Consulting</span></li><li>NYV <span>Growth</span></li><li>NYV <span>Labs</span></li>
+      </ul>
+      <p class="muted" style="margin-top:1rem;font-size:.95rem">"NYV" en Space Grotesk Bold con el interletrado del logotipo; el nombre de la línea en Space Grotesk Medium, misma altura de mayúsculas, separados por 0,5 em. Junto al símbolo, la línea sustituye al logotipo en el bloque horizontal.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="color">
+  <div class="wrap">
+    <div class="cols cols--side">
+      <div><h2>Color</h2><p class="muted">Papel de día, noche para los momentos clave y una sola señal.</p></div>
+      <p class="measure">La paleta nace del Observatorio: el papel de las bitácoras, la noche de la observación y la luz puntual que el instrumento captura. La señal es un único acento y se reserva para lo interactivo y los puntos de atención. Nunca conviven dos acentos.</p>
+    </div>
+    <div class="swatches" style="margin-top:3rem">
+      <div class="sw"><div class="sw__chip" style="background:#0b1526"></div><div class="sw__body"><b>Noche</b><code>#0B1526</code><small>Base oscura: hero, CTA, pie, ícono</small></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#112038"></div><div class="sw__body"><b>Noche 2</b><code>#112038</code><small>Superficies sobre Noche</small></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#121b2b"></div><div class="sw__body"><b>Tinta</b><code>#121B2B</code><small>Texto y símbolo sobre papel</small></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#46516a"></div><div class="sw__body"><b>Niebla</b><code>#46516A</code><small>Texto secundario sobre papel</small></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#f6f3ec;border-bottom:1px solid #d7d1c2"></div><div class="sw__body"><b>Papel</b><code>#F6F3EC</code><small>Base clara</small></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#ece8dd"></div><div class="sw__body"><b>Papel 2</b><code>#ECE8DD</code><small>Secciones alternas, tablas</small></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#0e9ab8"></div><div class="sw__body"><b>Señal</b><code>#0E9AB8</code><small>Punto del símbolo, controles</small></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#0a7a93"></div><div class="sw__body"><b>Señal texto</b><code>#0A7A93</code><small>Enlaces sobre papel</small></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#3cc7e6"></div><div class="sw__body"><b>Señal brillante</b><code>#3CC7E6</code><small>Señal sobre Noche</small></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#a9b6c9"></div><div class="sw__body"><b>Bruma</b><code>#A9B6C9</code><small>Texto secundario sobre Noche</small></div></div>
+    </div>
+    <div class="ratio" aria-label="Proporción orientativa"><div style="flex:6;background:#f6f3ec;border:1px solid #d7d1c2"></div><div style="flex:3;background:#121b2b"></div><div style="flex:1;background:#0e9ab8"></div></div>
+    <p class="muted" style="font-size:.9rem">Proporción orientativa: 60 % base (papel o noche), 30 % tinta o texto, 10 % señal.</p>
+    <h3 style="margin-top:2.5rem">Pares con contraste verificado</h3>
+    <div class="pairs">
+      <div class="pair" style="background:#f6f3ec;color:#121b2b;border:1px solid #d7d1c2">Tinta sobre Papel <small>15,9 : 1</small></div>
+      <div class="pair" style="background:#f6f3ec;color:#46516a;border:1px solid #d7d1c2">Niebla sobre Papel <small>7,1 : 1</small></div>
+      <div class="pair" style="background:#f6f3ec;color:#0a7a93;border:1px solid #d7d1c2">Señal texto sobre Papel <small>4,6 : 1</small></div>
+      <div class="pair" style="background:#0b1526;color:#eef2f7">Texto sobre Noche <small>16,6 : 1</small></div>
+      <div class="pair" style="background:#0b1526;color:#a9b6c9">Bruma sobre Noche <small>8,6 : 1</small></div>
+      <div class="pair" style="background:#0b1526;color:#3cc7e6">Señal brillante sobre Noche <small>9,3 : 1</small></div>
+      <div class="pair" style="background:#121b2b;color:#f6f3ec">Papel sobre Tinta (botón) <small>15,9 : 1</small></div>
+      <div class="pair" style="background:#3cc7e6;color:#0b1526">Noche sobre Señal brillante (botón) <small>9,3 : 1</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="tipografia">
+  <div class="wrap">
+    <div class="cols cols--side">
+      <div><h2>Tipografía</h2><p class="muted">Una voz de instrumento y una de lectura.</p></div>
+      <p class="measure">Space Grotesk, geométrica con detalles técnicos, para el logotipo, titulares y cifras. Inter, neutra y muy legible, para el texto y la interfaz. Ambas con licencia SIL Open Font License y autoalojadas: la marca no depende de un servicio externo.</p>
+    </div>
+    <div class="cols cols--2" style="margin-top:3rem">
+      <div class="spec">
+        <span class="spec__label">Space Grotesk · Medium 500 / Bold 700 · titulares y logotipo</span>
+        <p class="type-spec">Datos en visión.</p>
+        <p class="type-alpha">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 %&amp;@</p>
+        <ul class="scale"><li><small>−0,02 em</small>Interletrado en titulares</li><li><small>+0,07 em</small>Interletrado en el logotipo</li><li><small>1,08</small>Interlineado de titulares</li></ul>
+      </div>
+      <div class="spec">
+        <span class="spec__label">Inter · Regular 400 / Medium 500 / SemiBold 600 · texto e interfaz</span>
+        <p class="type-body">NYV diseña, desarrolla y opera soluciones de software, inteligencia artificial y datos que convierten la información de empresas e instituciones públicas en decisiones y resultados medibles.</p>
+        <ul class="scale"><li><small>17 px</small>Cuerpo, interlineado 1,6</li><li><small>14,4 px</small>Notas y etiquetas, mayúsculas con +0,08 em</li><li><small>tabular</small>Cifras alineadas en tablas (<code>tabular-nums</code>)</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band night" id="elementos">
+  <div class="wrap">
+    <div class="cols cols--side">
+      <div><h2>Elementos gráficos</h2><p class="muted">El lenguaje del instrumento, usado con medida.</p></div>
+      <p class="measure" style="color:var(--night-fg-2)">Tres elementos acompañan al logo sin competir con él. Aparecen en fondos, portadas y separadores, nunca encima del símbolo. En una composición no hay más de ocho balizas.</p>
+    </div>
+    <div class="elements" style="margin-top:3rem">
+      <div class="spec spec--night"><span class="spec__label">Escala graduada</span>
+        <svg viewBox="0 0 200 200" aria-hidden="true"><g stroke="#a9b6c9" stroke-width="1"><line x1="100" y1="8" x2="100" y2="20" transform="rotate(0 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(5 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(10 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(15 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(20 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(25 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(30 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(35 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(40 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(45 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(50 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(55 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(60 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(65 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(70 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(75 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(80 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(85 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(90 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(95 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(100 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(105 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(110 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(115 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(120 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(125 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(130 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(135 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(140 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(145 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(150 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(155 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(160 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(165 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(170 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(175 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(180 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(185 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(190 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(195 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(200 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(205 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(210 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(215 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(220 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(225 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(230 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(235 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(240 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(245 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(250 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(255 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(260 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(265 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(270 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(275 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(280 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(285 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(290 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(295 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(300 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(305 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(310 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(315 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(320 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(325 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(330 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(335 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(340 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(345 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(350 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(355 100 100)" opacity="0.45"/></g><circle cx="100" cy="100" r="60" fill="none" stroke="#a9b6c9" stroke-width=".8" opacity=".4"/><circle cx="100" cy="100" r="30" fill="none" stroke="#a9b6c9" stroke-width=".8" opacity=".4"/></svg>
+        <p class="muted" style="font-size:.9rem;margin:.8rem 0 0">Marcas cada 5°, mayores cada 30°. Fondo de hero y portadas.</p></div>
+      <div class="spec spec--night"><span class="spec__label">Horizonte</span>
+        <svg viewBox="0 0 200 200" aria-hidden="true"><line x1="16" y1="120" x2="184" y2="120" stroke="#a9b6c9" stroke-width="1"/><circle cx="150" cy="120" r="4" fill="#3cc7e6"/><circle cx="150" cy="120" r="10" fill="none" stroke="#3cc7e6" stroke-width="1" opacity=".35"/></svg>
+        <p class="muted" style="font-size:.9rem;margin:.8rem 0 0">Regla de 1 px con un punto señal. Separa secciones y acompaña firmas.</p></div>
+      <div class="spec spec--night"><span class="spec__label">Balizas</span>
+        <svg viewBox="0 0 200 200" aria-hidden="true"><g fill="#3cc7e6"><circle cx="60" cy="70" r="4"/><circle cx="130" cy="50" r="3"/><circle cx="150" cy="130" r="4"/><circle cx="80" cy="150" r="3"/><circle cx="110" cy="100" r="3.5"/></g><g fill="none" stroke="#3cc7e6" opacity=".3"><circle cx="60" cy="70" r="12"/><circle cx="150" cy="130" r="12"/><circle cx="110" cy="100" r="9"/></g></svg>
+        <p class="muted" style="font-size:.9rem;margin:.8rem 0 0">Puntos señal con halo tenue sobre Noche. Representan datos observados.</p></div>
+    </div>
+    <p class="muted" style="margin-top:2rem;max-width:66ch;color:var(--night-fg-2)"><b style="color:var(--night-fg)">Imágenes.</b> Instrumentos de medición, cielos nocturnos, larga exposición, arquitectura de observatorios, texturas de papel. Sin personas de banco de imágenes ni robots. Las fotografías se tratan con la paleta: sombras hacia Noche, luces hacia Papel.</p>
+  </div>
+</section>
+
+<section class="band" id="aplicaciones">
+  <div class="wrap">
+    <div class="cols cols--side">
+      <div><h2>Aplicaciones</h2><p class="muted">El sistema en los puntos de contacto reales de NYV.</p></div>
+      <p class="measure">Pantalla primero: el sitio, el ícono de la aplicación y la firma de correo son los soportes que más circulan. La tarjeta y la portada de presentación cierran el sistema para reuniones con instituciones.</p>
+    </div>
+    <div class="apps" style="margin-top:3rem">
+      <div class="browser">
+        <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">nyvcorp.com</span></div>
+        <div class="site-head"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="#121b2b"/>
+  <rect x="47" y="8" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="#121b2b"/>
+</svg><nav><b>Inicio</b><span>Nosotros</span><span>Líneas</span><span>Contacto</span></nav></div>
+        <div class="site-hero"><h3>Convertimos datos en visión <em>y decisiones.</em></h3><p>Software, inteligencia artificial y datos desde Ambato para América Latina y Estados Unidos.</p></div>
+      </div>
+      <div class="spec">
+        <span class="spec__label">Ícono de aplicación y avatar</span>
+        <div class="icons">
+          <svg viewBox="0 0 512 512" width="120" height="120">
+  <rect width="512" height="512" rx="112" fill="#0b1526"/>
+  <g transform="translate(102 102) scale(4.8125)">
+  <rect x="8" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <rect x="47" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  </g>
+</svg>
+          <svg viewBox="0 0 512 512" width="64" height="64">
+  <rect width="512" height="512" rx="112" fill="#0b1526"/>
+  <g transform="translate(102 102) scale(4.8125)">
+  <rect x="8" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <rect x="47" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  </g>
+</svg>
+          <svg viewBox="0 0 512 512" width="40" height="40">
+  <rect width="512" height="512" rx="112" fill="#0b1526"/>
+  <g transform="translate(102 102) scale(4.8125)">
+  <rect x="8" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <rect x="47" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  </g>
+</svg>
+          <svg viewBox="0 0 512 512" width="120" height="120" style="border-radius:50%">
+  <rect width="512" height="512" rx="112" fill="#0b1526"/>
+  <g transform="translate(102 102) scale(4.8125)">
+  <rect x="8" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <rect x="47" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  </g>
+</svg>
+        </div>
+        <p class="muted" style="font-size:.9rem;margin:1rem 0 0">Cuadrado nocturno, radio del 22 %, símbolo en papel al 60 %. El avatar circular recorta el mismo archivo.</p>
+      </div>
+      <div class="cards">
+        <div class="card card--front"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="#f6f3ec"/>
+  <rect x="47" y="8" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="#f6f3ec"/>
+</svg><div><div class="card__rule"></div><div class="card__contact">Software · Inteligencia artificial · Datos<br>Ambato, Ecuador</div></div></div>
+        <div class="card card--back"><div><div class="card__name">Christian Núñez Vaca</div><div class="card__role">Fundador · NYV S.A.S.</div></div><div><div class="card__rule"></div><div class="card__contact">christian.nunez.dev.ds@gmail.com<br>nyvcorp.com</div></div></div>
+      </div>
+      <div class="spec">
+        <span class="spec__label">Firma de correo y portada de presentación</span>
+        <div class="sig"><div class="sig__brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199 64" role="img" aria-label="NYV">
+  <rect x="8" y="8" fill="#121b2b"/>
+  <rect x="47" y="8" fill="#121b2b"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#121b2b"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#0e9ab8"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="#121b2b"/>
+</svg></div><b>Christian Núñez Vaca</b><br>Fundador · NYV S.A.S.<br><span class="muted">christian.nunez.dev.ds@gmail.com · Ambato, Ecuador</span></div>
+        <div class="slide" style="margin-top:1.5rem">
+          <svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><g stroke="#a9b6c9" stroke-width="1"><line x1="100" y1="8" x2="100" y2="20" transform="rotate(0 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(5 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(10 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(15 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(20 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(25 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(30 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(35 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(40 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(45 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(50 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(55 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(60 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(65 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(70 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(75 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(80 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(85 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(90 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(95 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(100 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(105 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(110 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(115 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(120 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(125 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(130 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(135 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(140 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(145 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(150 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(155 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(160 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(165 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(170 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(175 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(180 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(185 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(190 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(195 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(200 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(205 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(210 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(215 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(220 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(225 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(230 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(235 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(240 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(245 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(250 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(255 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(260 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(265 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(270 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(275 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(280 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(285 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(290 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(295 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(300 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(305 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(310 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(315 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(320 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(325 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="20" transform="rotate(330 100 100)" opacity="0.9"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(335 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(340 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(345 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(350 100 100)" opacity="0.45"/><line x1="100" y1="8" x2="100" y2="14" transform="rotate(355 100 100)" opacity="0.45"/></g><circle cx="100" cy="100" r="60" fill="none" stroke="#a9b6c9" stroke-width=".8" opacity=".4"/></svg>
+          <svg class="slide__mark" viewBox="0 0 199 64">
+  <rect x="8" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <rect x="47" y="8" width="9" height="48" fill="#f6f3ec"/>
+  <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" fill="#f6f3ec"/>
+  <circle cx="40.8" cy="17.2" r="3.4" fill="#3cc7e6"/>
+  <path d="M89.43 54L82 54L82 14.00L96.34 14.00L104.29 48.86L105.31 48.86L105.31 14.00L112.74 14.00L112.74 54L98.40 54L90.46 19.14L89.43 19.14L89.43 54ZM142.11 54L134.57 54L134.57 40.23L120.97 14.00L129.37 14.00L137.83 31.14L138.86 31.14L147.31 14.00L155.71 14.00L142.11 40.23L142.11 54ZM184.29 54L171.37 54L161.20 14.00L168.97 14.00L177.43 49.14L178.23 49.14L186.69 14.00L194.46 14.00L184.29 54Z" fill="#f6f3ec"/>
+</svg>
+          <h3>Plan de transformación digital 2027</h3><p>Propuesta técnica · GAD Municipal</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="voz">
+  <div class="wrap cols cols--side">
+    <div><h2>Voz</h2><p class="muted">Cómo escribe NYV.</p></div>
+    <div class="measure">
+      <p>Directa, precisa, sin superlativos. Habla de decisiones y resultados, no de tecnología por sí misma. Prefiere la frase corta y el dato verificable a la promesa.</p>
+      <dl class="facts">
+        <dt>NYV</dt><dd>Siempre en mayúsculas. Nunca "Nyv" ni "nyv".</dd>
+        <dt>NYV S.A.S.</dt><dd>Solo en contextos legales y contractuales. La sigla ya cumple el papel de "Corporation".</dd>
+        <dt>Líneas</dt><dd>Nombre completo la primera vez (NYV Software); después puede abreviarse (Software).</dd>
+        <dt>Certificaciones</dt><dd>Se presentan como ruta de madurez en adopción, nunca como logro alcanzado mientras no existan.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="archivos">
+  <div class="wrap cols cols--side">
+    <div><h2>Archivos</h2><p class="muted">Repositorio <code>CFDev-Bridge/NYV_Web</code>, carpeta <code>brand/</code>.</p></div>
+    <ul class="files">
+      <li>logo/nyv-simbolo.svg · -inverso · -mono <span>Símbolo en positivo, inverso y un color</span></li>
+      <li>logo/nyv-logotipo.svg · -inverso <span>Logotipo trazado a contornos</span></li>
+      <li>logo/nyv-horizontal.svg · -inverso · -mono <span>Bloque principal</span></li>
+      <li>logo/nyv-vertical.svg · -inverso <span>Bloque vertical</span></li>
+      <li>logo/nyv-icono-app.svg <span>Ícono 512 con fondo nocturno</span></li>
+      <li>logo/favicon.svg · public/favicon-32.png · apple-touch-icon.png <span>Favicon e íconos del sitio</span></li>
+      <li>IDENTIDAD.md <span>Esta guía en texto, con las medidas exactas</span></li>
+    </ul>
+  </div>
+</section>
