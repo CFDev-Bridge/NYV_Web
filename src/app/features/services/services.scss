@@ -1,10 +1,11 @@
 .lines-index {
   position: sticky;
-  top: var(--header-height);
+  top: var(--header-offset, var(--header-height));
   z-index: 10;
-  background: color-mix(in srgb, var(--paper) 92%, transparent);
-  backdrop-filter: blur(8px);
+  background: var(--paper);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px -20px rgb(18 27 43 / 0.5);
+  transition: top var(--duration-base) var(--ease-out);
 }
 
 .lines-index__inner {
@@ -122,6 +123,7 @@
 
   .line__head {
     position: sticky;
-    top: calc(var(--header-height) + 4.5rem);
+    top: calc(var(--header-offset, var(--header-height)) + 4.5rem);
+    transition: top var(--duration-base) var(--ease-out);
   }
 }

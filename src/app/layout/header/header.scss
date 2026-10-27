@@ -1,7 +1,16 @@
-.site-header {
+:host {
+  display: block;
   position: sticky;
   top: 0;
   z-index: 50;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+:host(.site-header-host--hidden) {
+  transform: translateY(-100%);
+}
+
+.site-header {
   background: color-mix(in srgb, var(--paper) 86%, transparent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
