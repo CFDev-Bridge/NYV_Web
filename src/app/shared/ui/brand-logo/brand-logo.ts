@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-/** Isologo de NYV S.A. en SVG inline para evitar peticiones externas. */
+/** Isologo de NYV S.A.S. en SVG inline para evitar peticiones externas. */
 @Component({
   selector: 'app-brand-logo',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -8,11 +8,11 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     <span class="brand" [class.brand--inverse]="variant() === 'inverse'">
       <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
         <rect x="2" y="2" width="36" height="36" rx="9" class="brand__mark-bg" />
-        <path d="M11 28V12l9 10 9-10v16" class="brand__mark-stroke" />
+        <path d="M12 28V12l16 16V12" class="brand__mark-stroke" />
       </svg>
       <span class="brand__text">
         <span class="brand__name">NYV</span>
-        <span class="brand__suffix">S.A.</span>
+        <span class="brand__suffix">S.A.S.</span>
       </span>
     </span>
   `,

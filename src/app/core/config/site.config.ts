@@ -7,10 +7,10 @@ import { SiteConfig } from '../models/site.models';
  */
 export const SITE_CONTENT: SiteConfig = {
   companyName: 'NYV',
-  legalName: 'NYV S.A.',
+  legalName: 'NYV S.A.S.',
   tagline: 'Tecnología y software que impulsan tu operación',
   description:
-    'NYV S.A. diseña, desarrolla e integra soluciones de software, datos e infraestructura ' +
+    'NYV S.A.S. diseña, desarrolla e integra soluciones de software, datos e infraestructura ' +
     'para empresas e instituciones que necesitan operar con eficiencia y crecer con confianza.',
   siteUrl: 'https://www.nyv.com.ec',
   navigation: [
@@ -150,7 +150,7 @@ export const SITE_CONTENT: SiteConfig = {
   ],
   about: {
     intro:
-      'NYV S.A. es una empresa de tecnología que acompaña a organizaciones públicas y privadas ' +
+      'NYV S.A.S. es una empresa de tecnología que acompaña a organizaciones públicas y privadas ' +
       'en el diseño, desarrollo y operación de sus sistemas de información.',
     mission:
       'Construir soluciones tecnológicas confiables que simplifiquen la operación de nuestros ' +

@@ -1,6 +1,6 @@
-# Sitio web corporativo de NYV S.A.
+# Sitio web corporativo de NYV S.A.S.
 
-Sitio institucional de **NYV S.A.** construido con **Angular 21** (componentes standalone, señales, detección de cambios sin Zone.js). Incluye las secciones Inicio, Nosotros, Servicios y Contacto, con formulario validado, SEO por ruta, accesibilidad y diseño responsive.
+Sitio institucional de **NYV S.A.S.** construido con **Angular 21** (componentes standalone, señales, detección de cambios sin Zone.js). Incluye las secciones Inicio, Nosotros, Servicios y Contacto, con formulario validado, SEO por ruta, accesibilidad y diseño responsive.
 
 ## Requisitos
 

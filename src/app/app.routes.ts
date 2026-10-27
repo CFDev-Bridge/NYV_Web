@@ -12,7 +12,7 @@ export const routes: Routes = [
     loadComponent: () => import('./features/home/home').then((m) => m.Home),
     data: seo(
       'Inicio',
-      'NYV S.A.: desarrollo de software a medida, datos e inteligencia de negocio, ' +
+      'NYV S.A.S.: desarrollo de software a medida, datos e inteligencia de negocio, ' +
         'integración de sistemas, nube y soporte para empresas e instituciones.',
     ),
   },
@@ -21,7 +21,7 @@ export const routes: Routes = [
     loadComponent: () => import('./features/about/about').then((m) => m.About),
     data: seo(
       'Nosotros',
-      'Conoce a NYV S.A.: misión, visión y los valores que guían cada proyecto tecnológico.',
+      'Conoce a NYV S.A.S.: misión, visión y los valores que guían cada proyecto tecnológico.',
     ),
   },
   {
@@ -29,7 +29,7 @@ export const routes: Routes = [
     loadComponent: () => import('./features/services/services').then((m) => m.Services),
     data: seo(
       'Servicios',
-      'Servicios de NYV S.A.: software a medida, analítica de datos, integración, ' +
+      'Servicios de NYV S.A.S.: software a medida, analítica de datos, integración, ' +
         'infraestructura en la nube, soporte y consultoría tecnológica.',
     ),
   },
