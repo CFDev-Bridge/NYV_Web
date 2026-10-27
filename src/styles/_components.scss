@@ -33,22 +33,41 @@
 }
 
 .btn--primary {
-  background: var(--ink);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ink) 88%, #fff) 0%, var(--ink) 55%);
   color: var(--paper);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12);
 
   &:hover:not(:disabled) {
     background: var(--night-2);
-    box-shadow: var(--shadow-sm);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.12),
+      var(--shadow-sm);
   }
 
   .section--night & {
-    background: var(--signal-bright);
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--signal-bright) 85%, #fff) 0%,
+      var(--signal-bright) 60%
+    );
     color: var(--night);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
 
     &:hover:not(:disabled) {
-      background: #6ad6ee;
+      background: color-mix(in srgb, var(--signal-bright) 80%, #fff);
     }
   }
+}
+
+/* Superficie elevada sobre noche: borde con luz superior y fondo translúcido. */
+.panel {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.05), rgb(255 255 255 / 0.015));
+  border: 1px solid var(--night-line);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 30px 60px -40px rgb(0 0 0 / 0.6);
 }
 
 .btn--ghost {

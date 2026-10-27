@@ -2,14 +2,25 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SITE_CONFIG } from '../../core/config/site.config';
 import { Reveal } from '../../shared/directives/reveal';
+import { Contours } from '../../shared/ui/contours/contours';
 import { CtaBanner } from '../../shared/ui/cta-banner/cta-banner';
+import { LineGlyph } from '../../shared/ui/line-glyph/line-glyph';
 import { ObservatoryInstrument } from '../../shared/ui/observatory-instrument/observatory-instrument';
 import { SectionHeading } from '../../shared/ui/section-heading/section-heading';
 import { StandardsRoadmap } from '../../shared/ui/standards-roadmap/standards-roadmap';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, Reveal, SectionHeading, ObservatoryInstrument, StandardsRoadmap, CtaBanner],
+  imports: [
+    RouterLink,
+    Reveal,
+    SectionHeading,
+    ObservatoryInstrument,
+    StandardsRoadmap,
+    CtaBanner,
+    LineGlyph,
+    Contours,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './home.html',
   styleUrl: './home.scss',

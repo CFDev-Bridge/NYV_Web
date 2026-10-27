@@ -23,19 +23,20 @@
 </section>
 
 <section class="section section--night" aria-labelledby="mision-titulo">
+  <app-contours class="purpose__contours" />
   <div class="container purpose">
-    <article class="purpose__block" appReveal>
+    <article class="purpose__block panel" appReveal>
       <h2 id="mision-titulo">Misión</h2>
       <p>{{ site.about.mission }}</p>
     </article>
-    <article class="purpose__block" appReveal [appRevealDelay]="120">
+    <article class="purpose__block panel" appReveal [appRevealDelay]="120">
       <h2>Visión 2031</h2>
       <p>{{ site.about.vision }}</p>
     </article>
   </div>
 </section>
 
-<section class="section" aria-labelledby="principios-titulo">
+<section class="section section--grid on-paper" aria-labelledby="principios-titulo">
   <div class="container">
     <app-section-heading
       headingId="principios-titulo"

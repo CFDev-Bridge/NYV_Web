@@ -26,11 +26,17 @@ export interface Standard {
   readonly scope: string;
 }
 
+export interface LabelValue {
+  readonly label: string;
+  readonly value: string;
+}
+
 export interface CaseStudy {
   readonly client: string;
   readonly sector: string;
   readonly summary: string;
   readonly model: string;
+  readonly facts: readonly LabelValue[];
 }
 
 export interface Principle {
@@ -58,6 +64,8 @@ export interface SiteConfig {
   readonly siteUrl: string;
   readonly navigation: readonly NavLink[];
   readonly facts: readonly string[];
+  /** Lectura de instrumento del hero: datos fijos y verificables de la empresa. */
+  readonly readout: readonly LabelValue[];
   readonly lines: readonly BusinessLine[];
   readonly journey: readonly JourneyStep[];
   readonly caseStudy: CaseStudy;

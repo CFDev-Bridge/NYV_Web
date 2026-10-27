@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SITE_CONFIG } from '../../core/config/site.config';
 import { CtaBanner } from '../../shared/ui/cta-banner/cta-banner';
+import { LineGlyph } from '../../shared/ui/line-glyph/line-glyph';
 
 @Component({
   selector: 'app-services',
-  imports: [RouterLink, CtaBanner],
+  imports: [RouterLink, CtaBanner, LineGlyph],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './services.html',
   styleUrl: './services.scss',

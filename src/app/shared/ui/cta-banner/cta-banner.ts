@@ -1,12 +1,14 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Contours } from '../contours/contours';
 
 @Component({
   selector: 'app-cta-banner',
-  imports: [RouterLink],
+  imports: [RouterLink, Contours],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="cta section--night" aria-labelledby="cta-titulo">
+      <app-contours class="cta__contours" />
       <div class="container cta__inner">
         <div class="cta__copy">
           <h2 id="cta-titulo" class="cta__title">{{ title() }}</h2>
@@ -32,6 +34,11 @@ import { RouterLink } from '@angular/router';
       border-radius: 50%;
       background: radial-gradient(circle, var(--signal-glow), transparent 65%);
       pointer-events: none;
+    }
+    .cta__contours {
+      color: var(--signal-bright);
+      opacity: 0.1;
+      mask-image: linear-gradient(90deg, transparent, #000 40%);
     }
     .cta__inner {
       position: relative;

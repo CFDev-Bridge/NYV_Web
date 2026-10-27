@@ -1,4 +1,5 @@
 <section class="hero section--night" aria-labelledby="hero-titulo">
+  <app-contours class="hero__contours" />
   <svg class="hero__scale" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
     <g class="hero__scale-ticks">
       @for (angle of scaleTicks; track angle) {
@@ -14,6 +15,7 @@
     <circle cx="200" cy="200" r="150" />
     <circle cx="200" cy="200" r="96" />
   </svg>
+
   <div class="container hero__grid">
     <div class="hero__copy">
       <h1 id="hero-titulo" class="hero__title">
@@ -28,28 +30,54 @@
         <a routerLink="/servicios" class="btn btn--ghost">Conocer las líneas</a>
       </div>
     </div>
-    <app-observatory-instrument class="hero__instrument" />
+    <div class="hero__stage">
+      <app-observatory-instrument class="hero__instrument" />
+      <p class="hero__caption">
+        <span class="hero__caption-dot" aria-hidden="true"></span>
+        Observando {{ site.lines.length }} líneas · {{ site.nameMeaning }}
+      </p>
+    </div>
   </div>
+
   <div class="container">
-    <ul class="hero__facts" aria-label="Datos de NYV">
-      @for (fact of site.facts; track fact) {
-        <li>{{ fact }}</li>
+    <dl class="readout readout--6 hero__readout" aria-label="Datos de NYV">
+      @for (item of site.readout; track item.label) {
+        <div>
+          <dt>{{ item.label }}</dt>
+          <dd>{{ item.value }}</dd>
+        </div>
       }
-    </ul>
+    </dl>
   </div>
 </section>
 
-<section class="section" aria-labelledby="lineas-titulo">
-  <div class="container">
-    <app-section-heading
-      headingId="lineas-titulo"
-      title="Seis líneas, una casa madre"
-      lead="NYV opera con líneas especializadas que comparten equipo, estándares e infraestructura. Contrata una o combina varias en un mismo proyecto."
-    />
+<section class="section section--grid on-paper" aria-labelledby="lineas-titulo">
+  <div class="container lines-layout">
+    <div class="lines-layout__intro">
+      <app-section-heading
+        headingId="lineas-titulo"
+        title="Seis líneas, una casa madre"
+        lead="Líneas especializadas que comparten equipo, estándares e infraestructura. Contrata una o combina varias en un mismo proyecto."
+      />
+      <a routerLink="/servicios" class="link-arrow">
+        Ver el detalle de cada línea
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
     <ol class="lines">
       @for (line of site.lines; track line.id; let i = $index) {
         <li appReveal [appRevealDelay]="i * 60">
           <a routerLink="/servicios" [fragment]="line.id" class="lines__row">
+            <app-line-glyph [lineId]="line.id" class="lines__glyph" />
             <span class="lines__name">
               <span class="lines__house">NYV</span>
               <span class="lines__short">{{ line.shortName }}</span>
@@ -72,7 +100,34 @@
   </div>
 </section>
 
-<section class="section section--night journey" aria-labelledby="recorrido-titulo">
+<section class="section section--night manifesto" aria-labelledby="manifiesto-titulo">
+  <app-contours class="manifesto__contours" />
+  <div class="container manifesto__grid">
+    <p class="manifesto__letters" aria-hidden="true">
+      <span>N</span><span class="manifesto__letter--y">Y</span><span>V</span>
+    </p>
+    <div class="manifesto__copy">
+      <h2 id="manifiesto-titulo">{{ site.nameMeaning }}</h2>
+      <p class="manifesto__text">{{ site.about.nameStory }}</p>
+      <p class="manifesto__direction">{{ site.about.direction }}</p>
+      <a routerLink="/nosotros" class="link-arrow">
+        Conocer la empresa
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper" aria-labelledby="recorrido-titulo">
   <div class="container">
     <app-section-heading
       headingId="recorrido-titulo"
@@ -91,46 +146,72 @@
   </div>
 </section>
 
-<section class="section" aria-labelledby="caso-titulo">
+<section class="section section--night" aria-labelledby="caso-titulo">
   <div class="container case">
     <div class="case__intro">
       <h2 id="caso-titulo">Primer proyecto en producción</h2>
       <p class="lead">
         El modelo growth partner ya opera: un socio aporta el mercado y NYV aporta la tecnología
-        completa.
+        completa, del desarrollo al alojamiento.
       </p>
     </div>
-    <article class="case__card" appReveal>
-      <p class="case__client">{{ site.caseStudy.client }}</p>
-      <p class="case__sector">{{ site.caseStudy.sector }}</p>
+    <article class="case__card panel" appReveal>
+      <header class="case__head">
+        <app-line-glyph lineId="ai" class="case__glyph" />
+        <div>
+          <p class="case__client">{{ site.caseStudy.client }}</p>
+          <p class="case__sector">{{ site.caseStudy.sector }}</p>
+        </div>
+      </header>
       <p class="case__summary">{{ site.caseStudy.summary }}</p>
-      <div class="case__footer">
-        <span class="tag">{{ site.caseStudy.model }}</span>
-        <a routerLink="/servicios" fragment="growth" class="link-arrow">
-          Cómo funciona NYV Growth
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path
-              d="M5 12h14M13 6l6 6-6 6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </a>
-      </div>
+      <dl class="readout case__facts">
+        @for (fact of site.caseStudy.facts; track fact.label) {
+          <div>
+            <dt>{{ fact.label }}</dt>
+            <dd>{{ fact.value }}</dd>
+          </div>
+        }
+      </dl>
+      <a routerLink="/servicios" fragment="growth" class="link-arrow">
+        Cómo funciona NYV Growth
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
     </article>
   </div>
 </section>
 
-<section class="section section--tint" aria-labelledby="madurez-titulo">
-  <div class="container">
-    <app-section-heading
-      headingId="madurez-titulo"
-      title="Ruta de madurez"
-      lead="Los estándares internacionales que sustentan la misión y la visión. NYV los adopta de forma progresiva y buscará certificarlos."
-    />
+<section class="section section--tint on-paper" aria-labelledby="madurez-titulo">
+  <div class="container maturity">
+    <div class="maturity__head">
+      <app-section-heading
+        headingId="madurez-titulo"
+        title="Ruta de madurez"
+        lead="Los estándares internacionales que sustentan la misión y la visión. NYV los adopta de forma progresiva y buscará certificarlos."
+      />
+      <dl class="readout maturity__readout">
+        <div>
+          <dt>Estándares en la ruta</dt>
+          <dd>{{ site.standards.length }}</dd>
+        </div>
+        <div>
+          <dt>Certificados hoy</dt>
+          <dd>0</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>En adopción</dd>
+        </div>
+      </dl>
+    </div>
     <app-standards-roadmap />
   </div>
 </section>

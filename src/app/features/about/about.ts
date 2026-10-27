@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SITE_CONFIG } from '../../core/config/site.config';
 import { Reveal } from '../../shared/directives/reveal';
+import { Contours } from '../../shared/ui/contours/contours';
 import { CtaBanner } from '../../shared/ui/cta-banner/cta-banner';
 import { SectionHeading } from '../../shared/ui/section-heading/section-heading';
 import { StandardsRoadmap } from '../../shared/ui/standards-roadmap/standards-roadmap';
 
 @Component({
   selector: 'app-about',
-  imports: [Reveal, SectionHeading, StandardsRoadmap, CtaBanner],
+  imports: [Reveal, Contours, SectionHeading, StandardsRoadmap, CtaBanner],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about.html',
   styleUrl: './about.scss',

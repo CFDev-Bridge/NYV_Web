@@ -52,6 +52,13 @@
   gap: var(--space-5);
 }
 
+.line__glyph {
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: var(--space-4);
+  color: var(--ink-2);
+}
+
 .line__name {
   display: flex;
   align-items: baseline;

@@ -18,9 +18,10 @@
 
 <div class="lines-detail">
   @for (line of site.lines; track line.id; let i = $index) {
-    <article class="line" [id]="line.id" [class.line--tint]="i % 2 === 1">
+    <article class="line on-paper" [id]="line.id" [class.line--tint]="i % 2 === 1">
       <div class="container line__grid">
         <header class="line__head">
+          <app-line-glyph [lineId]="line.id" class="line__glyph" />
           <h2 class="line__name">
             <span class="line__house">NYV</span>
             {{ line.shortName }}

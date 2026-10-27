@@ -28,6 +28,14 @@ export const SITE_CONTENT: SiteConfig = {
     'Construido con herramientas open source',
     'Ambato, Ecuador, con vocación exportadora',
   ],
+  readout: [
+    { label: 'Base', value: 'Ambato, Ecuador' },
+    { label: 'Altitud', value: '2 577 m s. n. m.' },
+    { label: 'Coordenadas', value: '1°14′ S · 78°37′ O' },
+    { label: 'Operación', value: '100 % en la nube' },
+    { label: 'Herramientas', value: 'Open source' },
+    { label: 'Mercados', value: 'Ecuador · EE. UU.' },
+  ],
   lines: [
     {
       id: 'software',
@@ -156,6 +164,12 @@ export const SITE_CONTENT: SiteConfig = {
       'infraestructura de NYV. TuSocio Visión aporta capital y relación con los clientes; NYV ' +
       'aporta tecnología, desarrollo y alojamiento.',
     model: 'Modelo growth partner',
+    facts: [
+      { label: 'Sector', value: 'Cafeterías' },
+      { label: 'Tecnología', value: 'Visión por computadora' },
+      { label: 'Modelo', value: 'Growth partner' },
+      { label: 'Estado', value: 'En producción' },
+    ],
   },
   standards: [
     { code: 'ISO 9001', scope: 'Sistema de gestión de la calidad' },
