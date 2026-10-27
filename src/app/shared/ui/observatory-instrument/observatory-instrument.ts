@@ -16,6 +16,15 @@ interface Beacon {
   readonly delay: number;
 }
 
+interface Link {
+  readonly x1: number;
+  readonly y1: number;
+  readonly x2: number;
+  readonly y2: number;
+  /** Instante del ciclo en que el barrido alcanza el segundo punto. */
+  readonly delay: number;
+}
+
 const CENTER = 200;
 const SWEEP_SECONDS = 14;
 
@@ -60,6 +69,12 @@ export class ObservatoryInstrument implements AfterViewInit, OnDestroy {
       r,
       delay: Math.round((angle / 360) * SWEEP_SECONDS * 100) / 100,
     };
+  });
+
+  /** Segmentos entre balizas consecutivas: se trazan cuando el barrido alcanza la segunda. */
+  protected readonly links: readonly Link[] = this.beacons.map((from, i) => {
+    const to = this.beacons[(i + 1) % this.beacons.length];
+    return { x1: from.cx, y1: from.cy, x2: to.cx, y2: to.cy, delay: to.delay };
   });
 
   ngAfterViewInit(): void {

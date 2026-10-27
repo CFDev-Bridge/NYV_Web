@@ -16,4 +16,6 @@ import { StandardsRoadmap } from '../../shared/ui/standards-roadmap/standards-ro
 })
 export class Home {
   protected readonly site = inject(SITE_CONFIG);
+  /** Marcas de la escala graduada del fondo del hero, cada 6°. */
+  protected readonly scaleTicks = Array.from({ length: 60 }, (_, i) => i * 6);
 }

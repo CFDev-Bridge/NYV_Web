@@ -67,14 +67,52 @@
   animation: beacon-ring var(--sweep-seconds, 14s) linear infinite;
 }
 
+.instrument__link {
+  stroke: var(--signal-bright);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  animation: link-draw var(--sweep-seconds, 14s) linear infinite;
+}
+
 .instrument__core {
   fill: var(--signal-bright);
 }
 
 :host(.is-paused) .instrument__sweep,
 :host(.is-paused) .instrument__beacon,
-:host(.is-paused) .instrument__beacon-ring {
+:host(.is-paused) .instrument__beacon-ring,
+:host(.is-paused) .instrument__link {
   animation-play-state: paused;
+}
+
+@keyframes link-draw {
+  0%,
+  2% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  3% {
+    opacity: 0.7;
+  }
+  10% {
+    stroke-dashoffset: 0;
+    opacity: 0.7;
+  }
+  40% {
+    stroke-dashoffset: 0;
+    opacity: 0.18;
+  }
+  85% {
+    stroke-dashoffset: 0;
+    opacity: 0.18;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
 }
 
 @keyframes sweep {
@@ -122,8 +160,14 @@
 @media (prefers-reduced-motion: reduce) {
   .instrument__sweep,
   .instrument__beacon,
-  .instrument__beacon-ring {
+  .instrument__beacon-ring,
+  .instrument__link {
     animation: none;
+  }
+
+  .instrument__link {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
   }
 
   .instrument__sweep {

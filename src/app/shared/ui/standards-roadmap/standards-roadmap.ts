@@ -8,7 +8,7 @@ import { Reveal } from '../../directives/reveal';
   imports: [Reveal],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ol class="roadmap">
+    <ol class="roadmap" appReveal>
       @for (standard of site.standards; track standard.code; let i = $index) {
         <li class="roadmap__item" appReveal [appRevealDelay]="i * 70">
           <span class="roadmap__marker" aria-hidden="true"></span>
@@ -38,7 +38,16 @@ import { Reveal } from '../../directives/reveal';
       bottom: 0.4rem;
       left: 0.3rem;
       width: 1px;
-      background: var(--line-strong);
+      background: var(--signal);
+      opacity: 0.5;
+      transform-origin: top;
+      transition: transform 1400ms var(--ease-out);
+    }
+    .roadmap.reveal--pending::before {
+      transform: scaleY(0);
+    }
+    .roadmap.reveal--pending.is-revealed::before {
+      transform: scaleY(1);
     }
     .roadmap__item {
       position: relative;
@@ -71,6 +80,12 @@ import { Reveal } from '../../directives/reveal';
       font-size: var(--text-sm);
       color: var(--ink-2);
     }
+    @media (prefers-reduced-motion: reduce) {
+      .roadmap::before {
+        transform: none !important;
+        transition: none;
+      }
+    }
     @media (min-width: 64rem) {
       .roadmap {
         grid-template-columns: repeat(6, 1fr);
@@ -84,6 +99,13 @@ import { Reveal } from '../../directives/reveal';
         right: 0;
         width: auto;
         height: 1px;
+        transform-origin: left;
+      }
+      .roadmap.reveal--pending::before {
+        transform: scaleX(0);
+      }
+      .roadmap.reveal--pending.is-revealed::before {
+        transform: scaleX(1);
       }
       .roadmap__marker {
         left: 0;

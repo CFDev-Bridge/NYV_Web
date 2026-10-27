@@ -44,6 +44,20 @@
     <line x1="200" y1="200" x2="200" y2="12" class="instrument__sweep-edge" />
   </g>
 
+  <g class="instrument__links">
+    @for (link of links; track link.delay) {
+      <line
+        [attr.x1]="link.x1"
+        [attr.y1]="link.y1"
+        [attr.x2]="link.x2"
+        [attr.y2]="link.y2"
+        pathLength="1"
+        class="instrument__link"
+        [style.animation-delay.s]="link.delay"
+      />
+    }
+  </g>
+
   <g class="instrument__beacons">
     @for (b of beacons; track b.cx) {
       <circle

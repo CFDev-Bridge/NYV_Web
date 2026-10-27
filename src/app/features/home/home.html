@@ -1,4 +1,19 @@
 <section class="hero section--night" aria-labelledby="hero-titulo">
+  <svg class="hero__scale" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <g class="hero__scale-ticks">
+      @for (angle of scaleTicks; track angle) {
+        <line
+          x1="200"
+          y1="4"
+          x2="200"
+          [attr.y2]="angle % 30 === 0 ? 22 : 12"
+          [attr.transform]="'rotate(' + angle + ' 200 200)'"
+        />
+      }
+    </g>
+    <circle cx="200" cy="200" r="150" />
+    <circle cx="200" cy="200" r="96" />
+  </svg>
   <div class="container hero__grid">
     <div class="hero__copy">
       <h1 id="hero-titulo" class="hero__title">
@@ -64,7 +79,7 @@
       title="De punta a punta"
       lead="NYV acompaña al cliente de principio a fin: diseña y desarrolla la solución, la aloja en la nube, la mantiene y, cuando el modelo lo permite, crece junto a él como socio."
     />
-    <ol class="journey__steps">
+    <ol class="journey__steps" appReveal>
       @for (step of site.journey; track step.title; let i = $index) {
         <li class="journey__step" appReveal [appRevealDelay]="i * 90">
           <span class="journey__node" aria-hidden="true"></span>
