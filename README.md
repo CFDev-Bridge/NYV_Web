@@ -14,6 +14,7 @@ Sitio institucional de **NYV S.A.** construido con **Angular 21** (componentes s
 | `npm install` | Instala las dependencias. |
 | `npm start` | Servidor de desarrollo en `http://localhost:4200`. |
 | `npm run build` | Compilación de producción en `dist/nyv-web/browser`. |
+| `npm run build:preview` | Compilación con rutas por hash y ruta base relativa en `dist/nyv-web-preview/browser`, para GitHub Pages o vistas previas sin servidor propio. |
 | `npm test` | Pruebas unitarias con Vitest. |
 | `npx prettier --write src` | Formatea el código. |
 
@@ -101,7 +102,7 @@ location / {
 
 **Netlify**: crea `public/_redirects` con `/* /index.html 200`.
 
-**GitHub Pages**: compila con `npm run build -- --base-href /NOMBRE-DEL-REPO/` y publica `dist/nyv-web/browser`, copiando `index.html` como `404.html`.
+**GitHub Pages u otro alojamiento sin reescritura de rutas**: usa `npm run build:preview` y publica `dist/nyv-web-preview/browser`. Esa configuración activa rutas por hash (`/#/servicios`) y ruta base relativa, así que no necesita `404.html` ni reglas de reescritura.
 
 ## Accesibilidad
 

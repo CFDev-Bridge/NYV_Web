@@ -67,6 +67,37 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "preview": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all",
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "baseHref": "./",
+              "outputPath": "dist/nyv-web-preview",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.preview.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

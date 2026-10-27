@@ -5,18 +5,26 @@ import {
   provideAppInitializer,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import {
+  provideRouter,
+  withHashLocation,
+  withInMemoryScrolling,
+  type RouterFeatures,
+} from '@angular/router';
+import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { provideContactSender } from './core/services/contact/provide-contact-sender';
 import { SeoManager } from './core/services/seo-manager';
 
+const routerFeatures: RouterFeatures[] = [
+  withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
+  ...(environment.hashRouting ? [withHashLocation()] : []),
+];
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(
-      routes,
-      withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
-    ),
+    provideRouter(routes, ...routerFeatures),
     provideHttpClient(withFetch()),
     provideContactSender(),
     provideAppInitializer(() => inject(SeoManager).init()),
