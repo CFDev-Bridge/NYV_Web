@@ -2,5 +2,5 @@
   <rect x="8" y="8" width="8" height="48" fill="currentColor"/>
   <rect x="48" y="8" width="8" height="48" fill="currentColor"/>
   <polygon points="8,8 19.3,8 56,44.7 56,56 44.7,56 8,19.3" fill="currentColor"/>
-  <polygon points="18.1,11 45,11 45,37.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="miter"/>
+  <polygon points="27.7,11.5 44.5,11.5 44.5,28.3" fill="currentColor"/>
 </svg>

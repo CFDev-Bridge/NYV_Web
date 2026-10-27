@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /**
- * Bloque de marca NYV: símbolo (N de nexo en tinta y V de visión en color
- * señal, separadas por un canal) + logotipo tipográfico. Los archivos maestros viven en
+ * Bloque de marca NYV: símbolo (N de nexo y V de visión en la misma tinta,
+ * separadas por un canal uniforme) + logotipo tipográfico. Los archivos maestros viven en
  * `brand/logo/`; este componente replica el símbolo en línea para evitar
  * peticiones y permitir el color por contexto.
  */
@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
         <rect x="8" y="8" width="8" height="48" class="brand__ink" />
         <rect x="48" y="8" width="8" height="48" class="brand__ink" />
         <polygon points="8,8 19.3,8 56,44.7 56,56 44.7,56 8,19.3" class="brand__ink" />
-        <polygon points="18.1,11 45,11 45,37.9" class="brand__dot" />
+        <polygon points="27.7,11.5 44.5,11.5 44.5,28.3" class="brand__ink" />
       </svg>
       <span class="brand__text">NYV</span>
     </span>
@@ -37,12 +37,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     }
     .brand__ink {
       fill: currentColor;
-    }
-    .brand__dot {
-      fill: var(--signal);
-    }
-    .brand--inverse .brand__dot {
-      fill: var(--signal-bright);
     }
     .brand__text {
       font-family: var(--font-display);

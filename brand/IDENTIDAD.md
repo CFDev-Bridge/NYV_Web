@@ -11,12 +11,12 @@ Versión 1.0, octubre de 2026. Propuesta para selección; la identidad definitiv
 
 ## Símbolo
 
-Una N construida con dos astas y una diagonal: el nexo. La contraforma superior derecha, entre la diagonal y el asta, se convierte en una V sólida en color señal: la visión. Un canal de separación mantiene las dos letras legibles; la Y del nombre queda implícita en el cruce. El vértice de la V, apuntando hacia abajo, es el punto de observación.
+Una N construida con dos astas y una diagonal: el nexo. Centrada en su contraforma superior derecha, una V sólida en la misma tinta: la visión. Un canal uniforme de 3,5 unidades en los tres lados mantiene las dos letras legibles; la Y del nombre queda implícita en el cruce. El vértice de la V, apuntando hacia abajo, es el punto de observación. El símbolo no depende del color: el color señal vive en el sitio, no en la marca.
 
 - Retícula de 64 × 64. Asta (a) = 8 unidades. Astas en x 8–16 y 48–56, de y 8 a 56.
 - Diagonal: paralelogramo de ancho perpendicular igual a **a**, vértices (8,8) (19.3,8) (56,44.7) (56,56) (44.7,56) (8,19.3).
-- V: triángulo con vértices (18.1,11) (45,11) (45,37.9), separado de la N por un canal de 3 unidades (0.375 a).
-- Versión monocroma: la V se dibuja en contorno de 1.6 unidades, nunca rellena, para que la N no se convierta en bloque.
+- V: triángulo con vértices (27.7,11.5) (44.5,11.5) (44.5,28.3), lados de 16.8 unidades, separado de la N por un canal uniforme de 3.5 unidades (0.44 a) medido perpendicularmente a cada lado.
+- Al ser de una sola tinta, la versión monocroma es el propio símbolo.
 - Archivos: `logo/nyv-simbolo.svg`, `logo/nyv-simbolo-inverso.svg`, `logo/nyv-simbolo-mono.svg`.
 
 ## Logotipo y bloques
@@ -38,13 +38,13 @@ Una N construida con dos astas y una diagonal: el nexo. La contraforma superior 
 
 | Versión | Tinta | Punto | Uso |
 |---|---|---|---|
-| Positiva | Tinta `#121B2B` | Señal `#0E9AB8` | Fondos claros (papel) |
-| Inversa | Papel `#F6F3EC` | Señal brillante `#3CC7E6` | Fondos nocturnos |
+| Positiva | Tinta `#121B2B` | Misma tinta | Fondos claros (papel) |
+| Inversa | Papel `#F6F3EC` | Mismo papel | Fondos nocturnos |
 | Monocroma | Un solo color | Mismo color | Grabado, sello, documentos a una tinta |
 
 ### Usos incorrectos
 
-No estirar ni comprimir. No rotar. No aplicar degradados, sombras ni contornos. No cambiar el color de la V a otro distinto del color señal. No rellenar la V en tinta ni eliminar el canal. No reconstruir el logotipo con otra tipografía. No colocar el bloque sobre fotografías sin una zona de contraste.
+No estirar ni comprimir. No rotar. No aplicar degradados, sombras ni contornos. No colorear la V con un color distinto al de la N. No eliminar ni estrechar el canal. No agrandar la V hasta tocar la diagonal. No reconstruir el logotipo con otra tipografía. No colocar el bloque sobre fotografías sin una zona de contraste.
 
 ## Líneas de negocio
 
@@ -64,7 +64,7 @@ Las líneas se nombran con el logotipo seguido del nombre de la línea: **NYV** 
 | Papel | `#F6F3EC` | Base clara |
 | Papel 2 | `#ECE8DD` | Secciones alternas, tablas |
 | Línea | `#D7D1C2` | Reglas y bordes |
-| Señal | `#0E9AB8` | Punto del símbolo, controles, elementos interactivos sobre papel |
+| Señal | `#0E9AB8` | Controles, balizas del instrumento y elementos interactivos sobre papel |
 | Señal texto | `#0A7A93` | Enlaces sobre papel (contraste 4.6:1) |
 | Señal brillante | `#3CC7E6` | Señal sobre Noche |
 | Bruma | `#A9B6C9` | Texto secundario sobre Noche |
