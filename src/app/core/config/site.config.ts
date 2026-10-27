@@ -29,12 +29,12 @@ export const SITE_CONTENT: SiteConfig = {
     'Ambato, Ecuador, con vocación exportadora',
   ],
   readout: [
-    { label: 'Base', value: 'Ambato, Ecuador' },
-    { label: 'Altitud', value: '2 577 m s. n. m.' },
-    { label: 'Coordenadas', value: '1°14′ S · 78°37′ O' },
-    { label: 'Operación', value: '100 % en la nube' },
-    { label: 'Herramientas', value: 'Open source' },
-    { label: 'Mercados', value: 'Ecuador · EE. UU.' },
+    { label: 'Líneas', value: '6' },
+    { label: 'En la nube', value: '100 %' },
+    { label: 'En producción', value: '1 proyecto' },
+    { label: 'Base · Ambato', value: '2 577 m' },
+    { label: 'Visión', value: '2031' },
+    { label: 'Mercados', value: 'EC · US' },
   ],
   lines: [
     {

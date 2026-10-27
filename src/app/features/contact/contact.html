@@ -1,62 +1,65 @@
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-header__title">Conversemos sobre tu proyecto</h1>
-    <p class="page-header__lead lead">
-      Cuéntanos qué necesitas y te responderemos en horario laboral con los siguientes pasos.
-    </p>
-  </div>
-</section>
-
-<section class="section">
+<section class="section section--night contact-stage">
+  <div class="aurora" aria-hidden="true"></div>
   <div class="container contact-layout">
-    <aside class="contact-info section--night" aria-labelledby="canales-titulo">
-      <h2 id="canales-titulo" class="contact-info__title">Canales de atención</h2>
-      <dl class="contact-info__list">
-        <div>
-          <dt>Correo electrónico</dt>
-          <dd>
-            <a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
-          </dd>
-        </div>
-        @if (site.contact.phone) {
+    <div class="contact-intro">
+      <p class="pill">
+        <span class="pill__dot" aria-hidden="true"></span>
+        Respondemos en horario laboral
+      </p>
+      <h1 class="contact-intro__title">Conversemos sobre tu proyecto</h1>
+      <p class="lead">
+        Cuéntanos el problema, el contexto y los plazos. Te respondemos con los siguientes pasos y
+        una propuesta de alcance.
+      </p>
+      <aside class="contact-info" aria-labelledby="canales-titulo">
+        <h2 id="canales-titulo" class="contact-info__title">Canales de atención</h2>
+        <dl class="contact-info__list">
           <div>
-            <dt>Teléfono</dt>
+            <dt>Correo electrónico</dt>
             <dd>
-              <a [href]="'tel:' + site.contact.phone">{{ site.contact.phone }}</a>
+              <a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
             </dd>
           </div>
-        }
-        @if (site.contact.whatsapp) {
+          @if (site.contact.phone) {
+            <div>
+              <dt>Teléfono</dt>
+              <dd>
+                <a [href]="'tel:' + site.contact.phone">{{ site.contact.phone }}</a>
+              </dd>
+            </div>
+          }
+          @if (site.contact.whatsapp) {
+            <div>
+              <dt>WhatsApp</dt>
+              <dd>
+                <a
+                  [href]="'https://wa.me/' + site.contact.whatsapp"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Escribir por WhatsApp
+                </a>
+              </dd>
+            </div>
+          }
           <div>
-            <dt>WhatsApp</dt>
+            <dt>Ubicación</dt>
             <dd>
-              <a
-                [href]="'https://wa.me/' + site.contact.whatsapp"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Escribir por WhatsApp
-              </a>
+              @if (site.contact.address) {
+                {{ site.contact.address }},
+              }
+              {{ site.contact.city }}, {{ site.contact.region }}, {{ site.contact.country }}
             </dd>
           </div>
-        }
-        <div>
-          <dt>Ubicación</dt>
-          <dd>
-            @if (site.contact.address) {
-              {{ site.contact.address }},
-            }
-            {{ site.contact.city }}, {{ site.contact.region }}, {{ site.contact.country }}
-          </dd>
-        </div>
-        <div>
-          <dt>Horario</dt>
-          <dd>{{ site.contact.schedule }}</dd>
-        </div>
-      </dl>
-    </aside>
+          <div>
+            <dt>Horario</dt>
+            <dd>{{ site.contact.schedule }}</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
 
-    <div class="contact-form-wrapper">
+    <div class="contact-form-wrapper panel">
       @if (status() === 'sent') {
         <div class="alert alert--success" role="status" aria-live="polite">
           <h2 class="alert__title">Mensaje registrado</h2>

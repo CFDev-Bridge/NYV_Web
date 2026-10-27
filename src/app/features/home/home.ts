@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SITE_CONFIG } from '../../core/config/site.config';
 import { Reveal } from '../../shared/directives/reveal';
@@ -29,4 +29,17 @@ export class Home {
   protected readonly site = inject(SITE_CONFIG);
   /** Marcas de la escala graduada del fondo del hero, cada 6°. */
   protected readonly scaleTicks = Array.from({ length: 60 }, (_, i) => i * 6);
+
+  private readonly cards = viewChild<ElementRef<HTMLElement>>('cards');
+
+  /** Desplaza el carrusel de líneas una tarjeta en la dirección indicada. */
+  protected scrollCards(direction: -1 | 1): void {
+    const track = this.cards()?.nativeElement;
+    if (!track) {
+      return;
+    }
+    const card = track.querySelector<HTMLElement>('.card');
+    const step = (card?.offsetWidth ?? 320) + 24;
+    track.scrollBy({ left: direction * step, behavior: 'smooth' });
+  }
 }

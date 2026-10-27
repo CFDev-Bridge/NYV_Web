@@ -1,4 +1,5 @@
 <section class="hero section--night" aria-labelledby="hero-titulo">
+  <div class="aurora" aria-hidden="true"></div>
   <app-contours class="hero__contours" />
   <svg class="hero__scale" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
     <g class="hero__scale-ticks">
@@ -18,6 +19,10 @@
 
   <div class="container hero__grid">
     <div class="hero__copy">
+      <p class="pill hero__pill">
+        <span class="pill__dot" aria-hidden="true"></span>
+        Software · Inteligencia artificial · Datos · Ambato, Ecuador
+      </p>
       <h1 id="hero-titulo" class="hero__title">
         <span class="hero__line">Software, inteligencia artificial y datos</span>
         <span class="hero__line"
@@ -32,15 +37,11 @@
     </div>
     <div class="hero__stage">
       <app-observatory-instrument class="hero__instrument" />
-      <p class="hero__caption">
-        <span class="hero__caption-dot" aria-hidden="true"></span>
-        Observando {{ site.lines.length }} líneas · {{ site.nameMeaning }}
-      </p>
     </div>
   </div>
 
   <div class="container">
-    <dl class="readout readout--6 hero__readout" aria-label="Datos de NYV">
+    <dl class="readout readout--6 hero__readout stats" aria-label="Cifras de NYV">
       @for (item of site.readout; track item.label) {
         <div>
           <dt>{{ item.label }}</dt>
@@ -51,52 +52,97 @@
   </div>
 </section>
 
-<section class="section section--grid on-paper" aria-labelledby="lineas-titulo">
-  <div class="container lines-layout">
-    <div class="lines-layout__intro">
-      <app-section-heading
-        headingId="lineas-titulo"
-        title="Seis líneas, una casa madre"
-        lead="Líneas especializadas que comparten equipo, estándares e infraestructura. Contrata una o combina varias en un mismo proyecto."
-      />
-      <a routerLink="/servicios" class="link-arrow">
-        Ver el detalle de cada línea
+<section class="section section--night lines-band" aria-labelledby="lineas-titulo">
+  <div class="container lines-band__head">
+    <app-section-heading
+      headingId="lineas-titulo"
+      title="Seis líneas, una casa madre"
+      lead="Líneas especializadas que comparten equipo, estándares e infraestructura. Contrata una o combina varias en un mismo proyecto."
+    />
+    <div class="lines-band__controls">
+      <button
+        type="button"
+        class="nav-btn"
+        (click)="scrollCards(-1)"
+        aria-label="Líneas anteriores"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M19 12H5M11 6l-6 6 6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button type="button" class="nav-btn" (click)="scrollCards(1)" aria-label="Líneas siguientes">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path
             d="M5 12h14M13 6l6 6-6 6"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
+            stroke-width="1.8"
             stroke-linecap="round"
             stroke-linejoin="round"
           />
         </svg>
-      </a>
+      </button>
     </div>
-    <ol class="lines">
+  </div>
+  <div class="container">
+    <ul class="cards" #cards>
       @for (line of site.lines; track line.id; let i = $index) {
-        <li appReveal [appRevealDelay]="i * 60">
-          <a routerLink="/servicios" [fragment]="line.id" class="lines__row">
-            <app-line-glyph [lineId]="line.id" class="lines__glyph" />
-            <span class="lines__name">
-              <span class="lines__house">NYV</span>
-              <span class="lines__short">{{ line.shortName }}</span>
-            </span>
-            <span class="lines__scope">{{ line.scope }}</span>
-            <svg class="lines__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path
-                d="M5 12h14M13 6l6 6-6 6"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+        <li class="card panel" appReveal [appRevealDelay]="i * 70">
+          <a routerLink="/servicios" [fragment]="line.id" class="card__link">
+            <div class="card__cover" [attr.data-line]="line.id">
+              <app-line-glyph [lineId]="line.id" class="card__glyph" />
+            </div>
+            <div class="card__body">
+              <p class="card__name"><span class="card__house">NYV</span> {{ line.shortName }}</p>
+              <p class="card__scope">{{ line.scope }}</p>
+              <span class="card__more">Ver línea</span>
+            </div>
           </a>
         </li>
       }
-    </ol>
+    </ul>
+  </div>
+</section>
+
+<section class="standards-strip" aria-label="Marcos de referencia en adopción">
+  <div class="container standards-strip__head">
+    <p>Marcos internacionales que guían la operación, en adopción progresiva</p>
+    <a routerLink="/nosotros" fragment="estandares-titulo" class="link-arrow">
+      Ruta de madurez
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path
+          d="M5 12h14M13 6l6 6-6 6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </div>
+  <div class="marquee">
+    <ul class="marquee__track">
+      @for (standard of site.standards; track standard.code) {
+        <li>
+          <b>{{ standard.code }}</b
+          ><span>{{ standard.scope }}</span>
+        </li>
+      }
+      @for (standard of site.standards; track 'dup-' + standard.code) {
+        <li aria-hidden="true">
+          <b>{{ standard.code }}</b
+          ><span>{{ standard.scope }}</span>
+        </li>
+      }
+    </ul>
   </div>
 </section>
 

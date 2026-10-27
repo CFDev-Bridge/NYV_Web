@@ -21,6 +21,9 @@
   --signal-bright: #3cc7e6;
   --signal-soft: #daf0f5;
   --signal-glow: rgb(60 199 230 / 0.35);
+  /* Luz ambiental de fondo: azul eléctrico profundo, nunca como acento de interfaz. */
+  --ambient: #2457e6;
+  --ambient-glow: rgb(36 87 230 / 0.38);
 
   --error: #b3261e;
   --error-soft: #fbe9e7;
