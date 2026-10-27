@@ -176,6 +176,7 @@ export const SITE_CONTENT: SiteConfig = {
       id: 'poa',
       name: 'Sistema POA',
       clientType: 'Gobierno autónomo descentralizado municipal',
+      role: 'Desarrollo y mantenimiento',
       period: '2023 · en operación',
       summary:
         'Plataforma web para formular, alinear y dar seguimiento al Plan Operativo Anual de un ' +
@@ -185,6 +186,58 @@ export const SITE_CONTENT: SiteConfig = {
         'seguimiento y rendición de cuentas.',
       stack: ['Oracle APEX', 'Oracle Database', 'PL/SQL', 'JavaScript'],
       lines: ['software', 'data', 'consulting'],
+    },
+    {
+      id: 'recomendaciones-cge',
+      name: 'Gestión de recomendaciones de la Contraloría General del Estado',
+      clientType: 'Gobierno autónomo descentralizado municipal',
+      role: 'Desarrollo',
+      summary:
+        'Sistema para registrar las recomendaciones emitidas por la Contraloría General del Estado ' +
+        'en sus informes, asignarlas a las unidades responsables, planificar las acciones de ' +
+        'cumplimiento y dar seguimiento a su estado con evidencias y alertas de plazo. Consolida ' +
+        'la matriz de cumplimiento que la institución debe sustentar.',
+      stack: ['Oracle APEX', 'Oracle Database', 'PL/SQL'],
+      lines: ['software', 'consulting'],
+    },
+    {
+      id: 'evaluacion-poa-pac',
+      name: 'Evaluación del POA y seguimiento al PAC',
+      clientType: 'Gobierno autónomo descentralizado municipal',
+      role: 'Colaboración en el desarrollo',
+      summary:
+        'Módulos de evaluación periódica del Plan Operativo Anual y de seguimiento del Plan Anual ' +
+        'de Contratación: registro de avances, cálculo de indicadores de cumplimiento físico y ' +
+        'presupuestario, y vinculación de los procesos de contratación con las actividades ' +
+        'planificadas.',
+      stack: ['Oracle APEX', 'Oracle Database', 'PL/SQL'],
+      lines: ['software', 'data'],
+    },
+    {
+      id: 'tableros-seguimiento',
+      name: 'Tableros de control de obras públicas, atención social y seguridad',
+      clientType: 'Gobierno autónomo descentralizado municipal',
+      role: 'Implementación',
+      summary:
+        'Tableros de control para el seguimiento del avance de obras públicas, proyectos de ' +
+        'atención social y seguridad: integración de las fuentes de cada área, indicadores de ' +
+        'avance físico y presupuestario, alertas por desvío y vistas consolidadas para la ' +
+        'dirección.',
+      stack: ['Oracle Database', 'SQL', 'Visualización de datos'],
+      lines: ['data', 'consulting'],
+    },
+    {
+      id: 'ia-seguimiento',
+      name: 'Herramienta con inteligencia artificial para el seguimiento institucional',
+      clientType: 'Gobierno autónomo descentralizado municipal',
+      role: 'Implementación',
+      summary:
+        'Herramienta con inteligencia artificial especializada en el seguimiento de obras ' +
+        'públicas, atención social y seguridad: consulta de la información de seguimiento en ' +
+        'lenguaje natural, resúmenes de estado y detección de desvíos para apoyar la toma de ' +
+        'decisiones.',
+      stack: ['Python', 'Inteligencia artificial', 'Oracle Database'],
+      lines: ['ai', 'data'],
     },
   ],
   experienceNote:

@@ -239,7 +239,12 @@
           <header class="project__head">
             <app-line-glyph [lineId]="project.lines[0]" class="project__glyph" />
             <div>
-              <p class="project__kicker">Equipo fundador · {{ project.period }}</p>
+              <p class="project__kicker">
+                Equipo fundador · {{ project.role }}
+                @if (project.period) {
+                  · {{ project.period }}
+                }
+              </p>
               <h3 class="project__name">{{ project.name }}</h3>
             </div>
           </header>

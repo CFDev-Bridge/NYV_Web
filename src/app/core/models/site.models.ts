@@ -44,7 +44,10 @@ export interface ExperienceProject {
   readonly id: string;
   readonly name: string;
   readonly clientType: string;
-  readonly period: string;
+  /** Papel del equipo fundador: desarrollo, colaboración o implementación. */
+  readonly role: string;
+  /** Periodo conocido; se omite cuando no está confirmado. */
+  readonly period?: string;
   readonly summary: string;
   readonly stack: readonly string[];
   /** Identificadores de las líneas NYV relacionadas. */

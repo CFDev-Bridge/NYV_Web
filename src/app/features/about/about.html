@@ -78,10 +78,10 @@
     <ol class="experience">
       @for (project of site.experience; track project.id; let i = $index) {
         <li class="experience__item" appReveal [appRevealDelay]="i * 90">
-          <span class="experience__period">{{ project.period }}</span>
+          <span class="experience__period">{{ project.period ?? project.role }}</span>
           <div class="experience__body panel">
             <h3 class="experience__name">{{ project.name }}</h3>
-            <p class="experience__client">{{ project.clientType }}</p>
+            <p class="experience__client">{{ project.clientType }} · {{ project.role }}</p>
             <p class="experience__summary">{{ project.summary }}</p>
             <p class="experience__stack">{{ project.stack.join(' · ') }}</p>
           </div>
