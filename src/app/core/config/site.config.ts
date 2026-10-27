@@ -11,9 +11,10 @@ export const SITE_CONTENT: SiteConfig = {
   nameMeaning: 'Nexo y Visión',
   tagline: 'Convertimos datos en visión y decisiones',
   description:
-    'NYV es una empresa ecuatoriana de desarrollo de software, inteligencia artificial, datos e ' +
-    'investigación. Diseña, desarrolla, aloja y mantiene soluciones a medida para empresas ' +
-    'privadas e instituciones públicas, desde Ambato hacia América Latina y Estados Unidos.',
+    'NYV es una empresa de tecnología con sede en Ambato, Ecuador. Diseñamos, desarrollamos, ' +
+    'alojamos y mantenemos software, inteligencia artificial y plataformas de datos para ' +
+    'empresas e instituciones públicas de América Latina y Estados Unidos, y convertimos sus ' +
+    'datos en visión y decisiones.',
   siteUrl: 'https://nyvcorp.com',
   navigation: [
     { label: 'Inicio', path: '/' },

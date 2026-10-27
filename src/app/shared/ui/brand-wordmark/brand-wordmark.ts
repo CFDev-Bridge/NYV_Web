@@ -12,10 +12,10 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   template: `
     <span class="brand" [class.brand--inverse]="variant() === 'inverse'">
       <svg class="brand__symbol" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-        <rect x="8" y="8" width="9" height="48" class="brand__ink" />
-        <rect x="47" y="8" width="9" height="48" class="brand__ink" />
-        <polygon points="8,8 20.7,8 56,43.3 56,56 43.3,56 8,20.7" class="brand__ink" />
-        <circle cx="40.8" cy="17.2" r="3.4" class="brand__dot" />
+        <rect x="8" y="8" width="8" height="48" class="brand__ink" />
+        <rect x="48" y="8" width="8" height="48" class="brand__ink" />
+        <polygon points="8,8 19.3,8 56,44.7 56,56 44.7,56 8,19.3" class="brand__ink" />
+        <circle cx="41" cy="18" r="4.2" class="brand__dot" />
       </svg>
       <span class="brand__text">NYV</span>
     </span>
@@ -31,8 +31,8 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       color: var(--night-text);
     }
     .brand__symbol {
-      width: 1.9rem;
-      height: 1.9rem;
+      width: 2.3rem;
+      height: 2.3rem;
       flex-shrink: 0;
     }
     .brand__ink {
@@ -46,7 +46,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     }
     .brand__text {
       font-family: var(--font-display);
-      font-size: 1.45rem;
+      font-size: 1.55rem;
       font-weight: 700;
       letter-spacing: 0.07em;
       line-height: 1;

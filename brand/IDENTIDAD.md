@@ -13,9 +13,9 @@ Versión 1.0, octubre de 2026. Propuesta para selección; la identidad definitiv
 
 Una N construida con dos astas y una diagonal. La diagonal es el nexo entre las dos astas. La contraforma superior derecha forma una V, la visión. Dentro de ella, un punto en color señal: lo observado.
 
-- Retícula de 64 × 64. Asta (a) = 9 unidades. Astas en x 8–17 y 47–56, de y 8 a 56.
-- Diagonal: paralelogramo de ancho perpendicular igual a **a**, vértices (8,8) (20.7,8) (56,43.3) (56,56) (43.3,56) (8,20.7).
-- Punto: centro (40.8, 17.2), radio 3.4 (≈ 0.75 a).
+- Retícula de 64 × 64. Asta (a) = 8 unidades. Astas en x 8–16 y 48–56, de y 8 a 56.
+- Diagonal: paralelogramo de ancho perpendicular igual a **a**, vértices (8,8) (19.3,8) (56,44.7) (56,56) (44.7,56) (8,19.3).
+- Punto: centro (41, 18), radio 4.2 (≈ 1.05 a). Al tamaño del encabezado web (37 px) mide 5 px de diámetro.
 - Archivos: `logo/nyv-simbolo.svg`, `logo/nyv-simbolo-inverso.svg`, `logo/nyv-simbolo-mono.svg`.
 
 ## Logotipo y bloques
@@ -28,7 +28,7 @@ Una N construida con dos astas y una diagonal. La diagonal es el nexo entre las 
 
 ### Espacio de protección y tamaños mínimos
 
-- Espacio libre alrededor de cualquier versión: una vez la anchura del asta (**a**) medida en el tamaño de uso. En el bloque horizontal de 64 px de alto, 9 px.
+- Espacio libre alrededor de cualquier versión: una vez la anchura del asta (**a**) medida en el tamaño de uso. En el bloque horizontal de 64 px de alto, 8 px.
 - Símbolo: mínimo 16 px en pantalla, 5 mm en impresión.
 - Bloque horizontal: mínimo 24 px de alto en pantalla, 8 mm en impresión.
 - Logotipo solo: mínimo 12 px de altura de mayúsculas.

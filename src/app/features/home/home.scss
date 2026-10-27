@@ -15,7 +15,8 @@
 
 .hero__title {
   margin: 0;
-  max-width: 18ch;
+  max-width: 24ch;
+  font-size: clamp(2.3rem, 1.3rem + 3vw, 4.1rem);
 }
 
 .hero__line {
