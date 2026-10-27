@@ -1,74 +1,120 @@
-<section class="hero" aria-labelledby="hero-titulo">
-  <div class="container hero__inner">
-    <div class="hero__content">
-      <p class="hero__eyebrow">{{ site.legalName }}</p>
-      <h1 id="hero-titulo" class="hero__title">{{ site.tagline }}</h1>
+<section class="hero section--night" aria-labelledby="hero-titulo">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <h1 id="hero-titulo" class="hero__title">
+        <span class="hero__line">Convertimos datos</span>
+        <span class="hero__line">en visión <span class="hero__accent">y decisiones.</span></span>
+      </h1>
       <p class="hero__lead">{{ site.description }}</p>
       <div class="hero__actions">
         <a routerLink="/contacto" class="btn btn--primary">Conversemos</a>
-        <a routerLink="/servicios" class="btn btn--ghost">Ver servicios</a>
+        <a routerLink="/servicios" class="btn btn--ghost">Conocer las líneas</a>
       </div>
     </div>
-    <div class="hero__visual" aria-hidden="true">
-      <div class="hero__panel hero__panel--one"></div>
-      <div class="hero__panel hero__panel--two"></div>
-      <div class="hero__panel hero__panel--three"></div>
-    </div>
+    <app-observatory-instrument class="hero__instrument" />
   </div>
-</section>
-
-<section class="section" aria-labelledby="propuesta-titulo">
   <div class="container">
-    <app-section-heading
-      headingId="propuesta-titulo"
-      eyebrow="Por qué NYV"
-      title="Tecnología con criterio de negocio"
-      lead="Diseñamos cada solución para resolver un problema concreto y sostenerse en el tiempo."
-    />
-    <div class="grid grid--3">
-      @for (item of site.valuePropositions; track item.title) {
-        <article class="feature">
-          <h3 class="feature__title">{{ item.title }}</h3>
-          <p class="feature__text">{{ item.description }}</p>
-        </article>
+    <ul class="hero__facts" aria-label="Datos de NYV">
+      @for (fact of site.facts; track fact) {
+        <li>{{ fact }}</li>
       }
-    </div>
+    </ul>
   </div>
 </section>
 
-<section class="section section--alt" aria-labelledby="servicios-titulo">
+<section class="section" aria-labelledby="lineas-titulo">
   <div class="container">
     <app-section-heading
-      headingId="servicios-titulo"
-      eyebrow="Servicios"
-      title="Lo que hacemos"
-      lead="Desde el desarrollo de una aplicación hasta la operación completa de tu plataforma."
+      headingId="lineas-titulo"
+      title="Seis líneas, una casa madre"
+      lead="NYV opera con líneas especializadas que comparten equipo, estándares e infraestructura. Contrata una o combina varias en un mismo proyecto."
     />
-    <div class="grid grid--3">
-      @for (service of site.services; track service.id) {
-        <app-service-card [service]="service" />
-      }
-    </div>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="proceso-titulo">
-  <div class="container">
-    <app-section-heading
-      headingId="proceso-titulo"
-      eyebrow="Cómo trabajamos"
-      title="Un proceso claro de principio a fin"
-      align="center"
-    />
-    <ol class="process">
-      @for (step of site.process; track step.title; let i = $index) {
-        <li class="process__step">
-          <span class="process__number" aria-hidden="true">{{ i + 1 }}</span>
-          <h3 class="process__title">{{ step.title }}</h3>
-          <p class="process__text">{{ step.description }}</p>
+    <ol class="lines">
+      @for (line of site.lines; track line.id; let i = $index) {
+        <li appReveal [appRevealDelay]="i * 60">
+          <a routerLink="/servicios" [fragment]="line.id" class="lines__row">
+            <span class="lines__name">
+              <span class="lines__house">NYV</span>
+              <span class="lines__short">{{ line.shortName }}</span>
+            </span>
+            <span class="lines__scope">{{ line.scope }}</span>
+            <svg class="lines__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M5 12h14M13 6l6 6-6 6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
         </li>
       }
     </ol>
+  </div>
+</section>
+
+<section class="section section--night journey" aria-labelledby="recorrido-titulo">
+  <div class="container">
+    <app-section-heading
+      headingId="recorrido-titulo"
+      title="De punta a punta"
+      lead="NYV acompaña al cliente de principio a fin: diseña y desarrolla la solución, la aloja en la nube, la mantiene y, cuando el modelo lo permite, crece junto a él como socio."
+    />
+    <ol class="journey__steps">
+      @for (step of site.journey; track step.title; let i = $index) {
+        <li class="journey__step" appReveal [appRevealDelay]="i * 90">
+          <span class="journey__node" aria-hidden="true"></span>
+          <h3 class="journey__title">{{ step.title }}</h3>
+          <p class="journey__text">{{ step.description }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="caso-titulo">
+  <div class="container case">
+    <div class="case__intro">
+      <h2 id="caso-titulo">Primer proyecto en producción</h2>
+      <p class="lead">
+        El modelo growth partner ya opera: un socio aporta el mercado y NYV aporta la tecnología
+        completa.
+      </p>
+    </div>
+    <article class="case__card" appReveal>
+      <p class="case__client">{{ site.caseStudy.client }}</p>
+      <p class="case__sector">{{ site.caseStudy.sector }}</p>
+      <p class="case__summary">{{ site.caseStudy.summary }}</p>
+      <div class="case__footer">
+        <span class="tag">{{ site.caseStudy.model }}</span>
+        <a routerLink="/servicios" fragment="growth" class="link-arrow">
+          Cómo funciona NYV Growth
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="madurez-titulo">
+  <div class="container">
+    <app-section-heading
+      headingId="madurez-titulo"
+      title="Ruta de madurez"
+      lead="Los estándares internacionales que sustentan la misión y la visión. NYV los adopta de forma progresiva y buscará certificarlos."
+    />
+    <app-standards-roadmap />
   </div>
 </section>
 

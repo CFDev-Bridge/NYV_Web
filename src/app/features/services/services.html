@@ -1,36 +1,60 @@
 <section class="page-header">
   <div class="container">
-    <p class="page-header__eyebrow">Servicios</p>
-    <h1 class="page-header__title">Soluciones para cada etapa de tu operación</h1>
-    <p class="page-header__lead">
-      Combinamos desarrollo, datos e infraestructura para entregar resultados concretos. Cada
-      servicio puede contratarse de forma independiente o como parte de un proyecto integral.
+    <h1 class="page-header__title">Líneas de negocio</h1>
+    <p class="page-header__lead lead">
+      Seis líneas especializadas bajo una misma casa madre. Comparten equipo, estándares e
+      infraestructura, y se combinan según lo que cada proyecto necesite.
     </p>
   </div>
 </section>
 
-<nav class="services-index" aria-label="Índice de servicios">
-  <div class="container services-index__inner">
-    @for (service of site.services; track service.id) {
-      <a class="services-index__link" routerLink="/servicios" [fragment]="service.id">{{
-        service.title
-      }}</a>
+<nav class="lines-index" aria-label="Índice de líneas">
+  <div class="container lines-index__inner">
+    @for (line of site.lines; track line.id) {
+      <a class="lines-index__link" routerLink="/servicios" [fragment]="line.id">{{ line.name }}</a>
     }
   </div>
 </nav>
 
-<section class="section" aria-label="Detalle de servicios">
-  <div class="container">
-    <div class="grid grid--2">
-      @for (service of site.services; track service.id) {
-        <app-service-card [service]="service" [detailed]="true" />
-      }
-    </div>
-  </div>
-</section>
+<div class="lines-detail">
+  @for (line of site.lines; track line.id; let i = $index) {
+    <article class="line" [id]="line.id" [class.line--tint]="i % 2 === 1">
+      <div class="container line__grid">
+        <header class="line__head">
+          <h2 class="line__name">
+            <span class="line__house">NYV</span>
+            {{ line.shortName }}
+          </h2>
+          <p class="line__scope">{{ line.scope }}</p>
+        </header>
+        <div class="line__body">
+          <p class="line__description">{{ line.description }}</p>
+          <ul class="line__deliverables">
+            @for (item of line.deliverables; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+          <a routerLink="/contacto" [queryParams]="{ linea: line.id }" class="link-arrow line__cta">
+            Consultar por {{ line.name }}
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M5 12h14M13 6l6 6-6 6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </article>
+  }
+</div>
 
 <app-cta-banner
-  title="¿No encuentras exactamente lo que necesitas?"
-  text="Diseñamos propuestas a la medida. Escríbenos y evaluamos juntos la mejor alternativa."
+  title="¿Tu necesidad cruza varias líneas?"
+  text="Es lo habitual. Diseñamos una propuesta integral con un solo equipo responsable."
   actionLabel="Solicitar una propuesta"
 />

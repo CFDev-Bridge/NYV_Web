@@ -12,8 +12,8 @@ export const routes: Routes = [
     loadComponent: () => import('./features/home/home').then((m) => m.Home),
     data: seo(
       'Inicio',
-      'NYV S.A.S.: desarrollo de software a medida, datos e inteligencia de negocio, ' +
-        'integración de sistemas, nube y soporte para empresas e instituciones.',
+      'NYV: software a medida, inteligencia artificial, datos e investigación desde Ambato, ' +
+        'Ecuador, para empresas e instituciones de América Latina y Estados Unidos.',
     ),
   },
   {
@@ -21,16 +21,16 @@ export const routes: Routes = [
     loadComponent: () => import('./features/about/about').then((m) => m.About),
     data: seo(
       'Nosotros',
-      'Conoce a NYV S.A.S.: misión, visión y los valores que guían cada proyecto tecnológico.',
+      'Nexo y Visión: quiénes somos, misión, visión 2031, modelo de operación y estándares.',
     ),
   },
   {
     path: 'servicios',
     loadComponent: () => import('./features/services/services').then((m) => m.Services),
     data: seo(
-      'Servicios',
-      'Servicios de NYV S.A.S.: software a medida, analítica de datos, integración, ' +
-        'infraestructura en la nube, soporte y consultoría tecnológica.',
+      'Líneas de negocio',
+      'NYV Software, NYV AI, NYV Data, NYV Consulting, NYV Growth y NYV Labs: ' +
+        'seis líneas especializadas bajo una misma casa madre.',
     ),
   },
   {

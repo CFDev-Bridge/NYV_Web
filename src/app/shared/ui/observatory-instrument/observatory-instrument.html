@@ -1,0 +1,68 @@
+<svg class="instrument" viewBox="0 0 400 400" role="img" aria-labelledby="instrumento-titulo">
+  <title id="instrumento-titulo">
+    Instrumento de observación: anillos graduados y un barrido que ilumina puntos de datos.
+  </title>
+  <defs>
+    <linearGradient id="sweep-fill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="var(--signal-bright)" stop-opacity="0" />
+      <stop offset="1" stop-color="var(--signal-bright)" stop-opacity="0.55" />
+    </linearGradient>
+    <radialGradient id="core-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="var(--signal-bright)" stop-opacity="0.9" />
+      <stop offset="1" stop-color="var(--signal-bright)" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <circle cx="200" cy="200" r="188" class="instrument__field" />
+
+  <g class="instrument__ticks">
+    @for (angle of ticks; track angle) {
+      <line
+        x1="200"
+        y1="12"
+        x2="200"
+        [attr.y2]="angle % 30 === 0 ? 26 : 19"
+        [attr.transform]="'rotate(' + angle + ' 200 200)'"
+        [class.instrument__tick--major]="angle % 30 === 0"
+      />
+    }
+  </g>
+
+  <g class="instrument__rings">
+    @for (r of rings; track r) {
+      <circle cx="200" cy="200" [attr.r]="r" />
+    }
+  </g>
+
+  <g class="instrument__axes">
+    <line x1="200" y1="28" x2="200" y2="372" />
+    <line x1="28" y1="200" x2="372" y2="200" />
+  </g>
+
+  <g class="instrument__sweep">
+    <path d="M200 200 L200 12 A188 188 0 0 1 294 37.2 Z" fill="url(#sweep-fill)" />
+    <line x1="200" y1="200" x2="200" y2="12" class="instrument__sweep-edge" />
+  </g>
+
+  <g class="instrument__beacons">
+    @for (b of beacons; track b.cx) {
+      <circle
+        [attr.cx]="b.cx"
+        [attr.cy]="b.cy"
+        [attr.r]="b.r"
+        class="instrument__beacon"
+        [style.animation-delay.s]="b.delay"
+      />
+      <circle
+        [attr.cx]="b.cx"
+        [attr.cy]="b.cy"
+        [attr.r]="b.r"
+        class="instrument__beacon-ring"
+        [style.animation-delay.s]="b.delay"
+      />
+    }
+  </g>
+
+  <circle cx="200" cy="200" r="26" fill="url(#core-glow)" class="instrument__core-glow" />
+  <circle cx="200" cy="200" r="5" class="instrument__core" />
+</svg>

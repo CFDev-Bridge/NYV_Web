@@ -3,30 +3,37 @@ export interface NavLink {
   readonly path: string;
 }
 
-export interface ServiceOffering {
+/** Línea de negocio bajo la casa madre NYV (p. ej. NYV Software). */
+export interface BusinessLine {
   /** Identificador estable; se usa en anclas y en el asunto del formulario. */
   readonly id: string;
-  readonly title: string;
-  readonly summary: string;
+  /** Nombre comercial completo: "NYV Software". */
+  readonly name: string;
+  /** Sufijo de la línea: "Software". */
+  readonly shortName: string;
+  readonly scope: string;
   readonly description: string;
   readonly deliverables: readonly string[];
-  /** Nombre del icono definido en `ServiceCard`. */
-  readonly icon: ServiceIcon;
 }
 
-export type ServiceIcon = 'code' | 'data' | 'cloud' | 'integration' | 'support' | 'strategy';
-
-export interface ValueProposition {
+export interface JourneyStep {
   readonly title: string;
   readonly description: string;
 }
 
-export interface ProcessStep {
-  readonly title: string;
-  readonly description: string;
+export interface Standard {
+  readonly code: string;
+  readonly scope: string;
 }
 
-export interface CompanyValue {
+export interface CaseStudy {
+  readonly client: string;
+  readonly sector: string;
+  readonly summary: string;
+  readonly model: string;
+}
+
+export interface Principle {
   readonly title: string;
   readonly description: string;
 }
@@ -36,6 +43,7 @@ export interface ContactChannels {
   readonly phone?: string;
   readonly whatsapp?: string;
   readonly city: string;
+  readonly region: string;
   readonly country: string;
   readonly address?: string;
   readonly schedule: string;
@@ -44,18 +52,25 @@ export interface ContactChannels {
 export interface SiteConfig {
   readonly companyName: string;
   readonly legalName: string;
+  readonly nameMeaning: string;
   readonly tagline: string;
   readonly description: string;
   readonly siteUrl: string;
   readonly navigation: readonly NavLink[];
-  readonly services: readonly ServiceOffering[];
-  readonly valuePropositions: readonly ValueProposition[];
-  readonly process: readonly ProcessStep[];
+  readonly facts: readonly string[];
+  readonly lines: readonly BusinessLine[];
+  readonly journey: readonly JourneyStep[];
+  readonly caseStudy: CaseStudy;
+  readonly standards: readonly Standard[];
   readonly about: {
     readonly intro: string;
+    readonly nameStory: string;
+    readonly direction: string;
     readonly mission: string;
     readonly vision: string;
-    readonly values: readonly CompanyValue[];
+    readonly principles: readonly Principle[];
+    readonly operatingModel: readonly string[];
+    readonly markets: string;
   };
   readonly contact: ContactChannels;
 }

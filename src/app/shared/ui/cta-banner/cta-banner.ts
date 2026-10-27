@@ -6,27 +6,35 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="cta" aria-labelledby="cta-titulo">
+    <section class="cta section--night" aria-labelledby="cta-titulo">
       <div class="container cta__inner">
-        <div>
+        <div class="cta__copy">
           <h2 id="cta-titulo" class="cta__title">{{ title() }}</h2>
           <p class="cta__text">{{ text() }}</p>
         </div>
-        <a routerLink="/contacto" class="btn btn--accent">{{ actionLabel() }}</a>
+        <a routerLink="/contacto" class="btn btn--primary">{{ actionLabel() }}</a>
       </div>
     </section>
   `,
   styles: `
     .cta {
+      position: relative;
+      overflow: hidden;
       padding-block: var(--space-8);
-      background: linear-gradient(
-        135deg,
-        var(--color-primary) 0%,
-        var(--color-primary-strong) 100%
-      );
-      color: var(--color-on-primary);
+      border-top: 1px solid var(--night-line);
+    }
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: auto -10% -60% auto;
+      width: 36rem;
+      height: 36rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--signal-glow), transparent 65%);
+      pointer-events: none;
     }
     .cta__inner {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: var(--space-5);
@@ -34,12 +42,12 @@ import { RouterLink } from '@angular/router';
     }
     .cta__title {
       margin: 0;
-      color: inherit;
+      max-width: 20ch;
     }
     .cta__text {
-      margin: var(--space-2) 0 0;
-      max-width: 60ch;
-      color: var(--color-on-primary-muted);
+      margin: var(--space-3) 0 0;
+      max-width: 58ch;
+      color: var(--night-muted);
     }
     @media (min-width: 48rem) {
       .cta__inner {
@@ -51,9 +59,9 @@ import { RouterLink } from '@angular/router';
   `,
 })
 export class CtaBanner {
-  readonly title = input('¿Tienes un proyecto en mente?');
+  readonly title = input('¿Qué decisión necesitas ver con más claridad?');
   readonly text = input(
-    'Cuéntanos qué necesitas y te proponemos un camino claro en alcance, tiempo y presupuesto.',
+    'Cuéntanos el problema y te proponemos un camino concreto en alcance, tiempo y presupuesto.',
   );
   readonly actionLabel = input('Conversemos');
 }

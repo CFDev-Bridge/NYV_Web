@@ -9,6 +9,7 @@ import {
   provideRouter,
   withHashLocation,
   withInMemoryScrolling,
+  withViewTransitions,
   type RouterFeatures,
 } from '@angular/router';
 import { environment } from '../environments/environment';
@@ -18,6 +19,7 @@ import { SeoManager } from './core/services/seo-manager';
 
 const routerFeatures: RouterFeatures[] = [
   withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
+  withViewTransitions({ skipInitialTransition: true }),
   ...(environment.hashRouting ? [withHashLocation()] : []),
 ];
 

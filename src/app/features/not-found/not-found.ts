@@ -28,13 +28,15 @@ import { RouterLink } from '@angular/router';
     }
     .not-found__code {
       margin: 0;
-      font-size: 5rem;
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 6rem;
+      font-weight: 700;
       line-height: 1;
-      color: var(--color-accent);
+      letter-spacing: -0.04em;
+      color: var(--signal);
     }
     .not-found__text {
-      color: var(--color-text-muted);
+      color: var(--ink-2);
     }
     .not-found__actions {
       display: flex;

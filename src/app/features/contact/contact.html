@@ -1,8 +1,7 @@
 <section class="page-header">
   <div class="container">
-    <p class="page-header__eyebrow">Contacto</p>
     <h1 class="page-header__title">Conversemos sobre tu proyecto</h1>
-    <p class="page-header__lead">
+    <p class="page-header__lead lead">
       Cuéntanos qué necesitas y te responderemos en horario laboral con los siguientes pasos.
     </p>
   </div>
@@ -10,7 +9,7 @@
 
 <section class="section">
   <div class="container contact-layout">
-    <aside class="contact-info" aria-labelledby="canales-titulo">
+    <aside class="contact-info section--night" aria-labelledby="canales-titulo">
       <h2 id="canales-titulo" class="contact-info__title">Canales de atención</h2>
       <dl class="contact-info__list">
         <div>
@@ -47,7 +46,7 @@
             @if (site.contact.address) {
               {{ site.contact.address }},
             }
-            {{ site.contact.city }}, {{ site.contact.country }}
+            {{ site.contact.city }}, {{ site.contact.region }}, {{ site.contact.country }}
           </dd>
         </div>
         <div>
@@ -155,7 +154,7 @@
                 [attr.aria-invalid]="showError('subject')"
                 [attr.aria-describedby]="showError('subject') ? 'asunto-error' : null"
               >
-                <option value="" disabled>Selecciona un servicio</option>
+                <option value="" disabled>Selecciona una línea</option>
                 @for (subject of subjects; track subject) {
                   <option [value]="subject">{{ subject }}</option>
                 }

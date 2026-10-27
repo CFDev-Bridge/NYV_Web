@@ -1,6 +1,17 @@
 # Sitio web corporativo de NYV S.A.S.
 
-Sitio institucional de **NYV S.A.S.** construido con **Angular 21** (componentes standalone, señales, detección de cambios sin Zone.js). Incluye las secciones Inicio, Nosotros, Servicios y Contacto, con formulario validado, SEO por ruta, accesibilidad y diseño responsive.
+Sitio institucional de **NYV S.A.S.** construido con **Angular 21** (componentes standalone, señales, detección de cambios sin Zone.js). Incluye las secciones Inicio, Nosotros, Líneas de negocio y Contacto, con formulario validado, SEO por ruta, accesibilidad y diseño responsive.
+
+## Dirección de diseño
+
+El concepto visual es **El Observatorio**: la empresa que observa y anticipa, convierte datos en visión y decisiones.
+
+- **Mundo visual:** papel cálido (`--paper`) para la lectura diurna y noche profunda (`--night`) para los momentos clave: hero, propósito, llamadas a la acción y pie. Un único color de señal (`--signal`) marca lo interactivo.
+- **Tipografía autoalojada:** Space Grotesk para titulares e Inter para texto, servidas desde `src/styles/fonts/` sin peticiones externas (compatible con la CSP).
+- **Momento de movimiento autoral:** el instrumento del hero (`ObservatoryInstrument`), un barrido que ilumina puntos de datos. Se pausa fuera de pantalla y se desactiva con `prefers-reduced-motion`.
+- **Revelado al desplazarse:** directiva `appReveal` solo en listas (líneas, recorrido, principios, ruta de madurez). El estado por defecto es visible, así que sin JavaScript nada queda oculto.
+- **Transiciones entre páginas:** `withViewTransitions` del enrutador.
+- **Marca:** NYV es marca denominativa; el componente `BrandWordmark` concentra el logotipo tipográfico y el glifo de lente de apoyo, de modo que la identidad definitiva se reemplace en un solo lugar.
 
 ## Requisitos
 
@@ -24,18 +35,19 @@ Sitio institucional de **NYV S.A.S.** construido con **Angular 21** (componentes
 src/
 ├── app/
 │   ├── core/
-│   │   ├── config/site.config.ts        # Contenido institucional (textos, servicios, contacto)
+│   │   ├── config/site.config.ts        # Contenido institucional (líneas, misión, estándares, contacto)
 │   │   ├── models/                      # Interfaces de dominio
 │   │   └── services/
 │   │       ├── seo-manager.ts           # Título, metadatos, canónica y foco por ruta
 │   │       └── contact/                 # Canal de envío del formulario (HTTP o mailto)
 │   ├── layout/                          # Cabecera y pie de página
 │   ├── features/                        # Páginas: home, about, services, contact, not-found
-│   ├── shared/ui/                       # Componentes reutilizables (logo, tarjetas, CTA)
+│   ├── shared/directives/               # Directiva de revelado al desplazarse
+│   ├── shared/ui/                       # Logotipo, instrumento del hero, ruta de madurez, CTA
 │   ├── app.config.ts                    # Proveedores de la aplicación
 │   └── app.routes.ts                    # Rutas con carga diferida y datos SEO
 ├── environments/                        # Configuración por entorno
-└── styles/                              # Tokens de diseño, base, layout y componentes globales
+└── styles/                              # Tokens, base, layout, componentes, movimiento y fuentes
 ```
 
 ## Cómo actualizar el contenido
@@ -43,8 +55,9 @@ src/
 Todo el contenido institucional vive en `src/app/core/config/site.config.ts`:
 
 - `legalName`, `tagline`, `description` y `siteUrl` (URL pública, usada en la etiqueta canónica).
-- `services`: cada servicio tiene `id` (se usa como ancla y en el enlace *Solicitar información*), título, resumen, descripción y entregables.
-- `about`: misión, visión y valores.
+- `lines`: las seis líneas de negocio. Cada una tiene `id` (ancla en la página de líneas y parámetro `?linea=` del formulario), nombre, alcance, descripción y entregables.
+- `journey`, `caseStudy`, `standards` y `facts`: recorrido de punta a punta, primer proyecto, ruta de madurez y datos del hero.
+- `about`: historia del nombre, dirección estratégica, misión, visión, principios, modelo de operación y mercados.
 - `contact`: correo (obligatorio), teléfono, WhatsApp (número internacional sin `+`), dirección y horario. Los campos opcionales se muestran solo si tienen valor.
 
 Las páginas leen esta configuración mediante el token `SITE_CONFIG`; no hay textos institucionales repartidos en las plantillas.
@@ -84,7 +97,7 @@ El endpoint debe validar nuevamente los datos en el servidor y aplicar límites 
 - Política de seguridad de contenido (CSP) declarada en `src/index.html` sin `unsafe-inline` para scripts. `connect-src` permite `https:` para que el endpoint de contacto funcione; si usas un dominio fijo, restríngelo a ese origen. La compilación desactiva el CSS crítico en línea (`inlineCritical: false`) porque esa optimización inyecta un manejador `onload` inline que la CSP bloquearía.
 - Sin dependencias de fuentes ni scripts externos.
 - Angular sanitiza toda interpolación; el proyecto no usa `innerHTML` ni `bypassSecurityTrust*`.
-- Parámetros de consulta (`?servicio=`) se validan contra la lista de servicios antes de usarse.
+- Parámetros de consulta (`?linea=`) se validan contra la lista de líneas antes de usarse.
 
 Configura además en el servidor las cabeceras `Strict-Transport-Security`, `X-Content-Type-Options: nosniff`, `Referrer-Policy` y `Content-Security-Policy` con `frame-ancestors 'none'` (esa directiva solo surte efecto como cabecera HTTP, no en la etiqueta `meta`).
 

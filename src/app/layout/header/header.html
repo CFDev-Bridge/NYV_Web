@@ -1,12 +1,12 @@
-<header class="site-header">
+<header class="site-header" [class.site-header--scrolled]="scrolled()">
   <div class="container site-header__bar">
     <a
       routerLink="/"
       class="site-header__brand"
       (click)="closeMenu()"
-      aria-label="NYV S.A.S. Inicio"
+      aria-label="NYV, ir al inicio"
     >
-      <app-brand-logo />
+      <app-brand-wordmark />
     </a>
 
     <button
@@ -17,7 +17,6 @@
       (click)="toggleMenu()"
     >
       <span class="visually-hidden">{{ menuOpen() ? 'Cerrar menú' : 'Abrir menú' }}</span>
-      <span class="site-header__toggle-bar" aria-hidden="true"></span>
       <span class="site-header__toggle-bar" aria-hidden="true"></span>
       <span class="site-header__toggle-bar" aria-hidden="true"></span>
     </button>
@@ -45,7 +44,7 @@
         }
       </ul>
       <a routerLink="/contacto" class="btn btn--primary site-header__cta" (click)="closeMenu()">
-        Hablemos
+        Conversemos
       </a>
     </nav>
   </div>

@@ -3,185 +3,228 @@ import { SiteConfig } from '../models/site.models';
 
 /**
  * Único punto de verdad del contenido institucional.
- * Para actualizar textos, servicios o datos de contacto edita este archivo.
+ * Fuente: Perfil de empresa NYV S.A.S. (octubre de 2026).
  */
 export const SITE_CONTENT: SiteConfig = {
   companyName: 'NYV',
   legalName: 'NYV S.A.S.',
-  tagline: 'Tecnología y software que impulsan tu operación',
+  nameMeaning: 'Nexo y Visión',
+  tagline: 'Convertimos datos en visión y decisiones',
   description:
-    'NYV S.A.S. diseña, desarrolla e integra soluciones de software, datos e infraestructura ' +
-    'para empresas e instituciones que necesitan operar con eficiencia y crecer con confianza.',
-  siteUrl: 'https://www.nyv.com.ec',
+    'NYV es una empresa ecuatoriana de desarrollo de software, inteligencia artificial, datos e ' +
+    'investigación. Diseña, desarrolla, aloja y mantiene soluciones a medida para empresas ' +
+    'privadas e instituciones públicas, desde Ambato hacia América Latina y Estados Unidos.',
+  siteUrl: 'https://nyvcorp.com',
   navigation: [
     { label: 'Inicio', path: '/' },
     { label: 'Nosotros', path: '/nosotros' },
-    { label: 'Servicios', path: '/servicios' },
+    { label: 'Líneas', path: '/servicios' },
     { label: 'Contacto', path: '/contacto' },
   ],
-  services: [
+  facts: [
+    'Software, IA, datos e investigación',
+    'Operación 100 % en la nube',
+    'Construido con herramientas open source',
+    'Ambato, Ecuador, con vocación exportadora',
+  ],
+  lines: [
     {
-      id: 'desarrollo-software',
-      title: 'Desarrollo de software a medida',
-      summary: 'Aplicaciones web, móviles y APIs construidas sobre tus procesos reales.',
+      id: 'software',
+      name: 'NYV Software',
+      shortName: 'Software',
+      scope: 'Desarrollo a medida, adaptación de sistemas y licenciamiento.',
       description:
-        'Levantamos requerimientos junto a tu equipo, diseñamos la arquitectura y entregamos ' +
-        'software mantenible, probado y documentado. Trabajamos con entregas incrementales para ' +
-        'que veas avances desde las primeras semanas.',
+        'Sistemas, aplicaciones, bases de datos y plataformas web construidos sobre los procesos ' +
+        'reales de cada organización. Adaptamos sistemas existentes cuando reemplazarlos no tiene ' +
+        'sentido y licenciamos productos propios cuando el problema se repite entre clientes.',
       deliverables: [
-        'Aplicaciones web y portales empresariales',
-        'APIs REST seguras y documentadas',
-        'Aplicaciones móviles multiplataforma',
-        'Pruebas automatizadas y documentación técnica',
+        'Aplicaciones web y portales institucionales',
+        'APIs seguras y documentadas',
+        'Bases de datos: diseño, migración y optimización',
+        'Adaptación e integración de sistemas existentes',
       ],
-      icon: 'code',
     },
     {
-      id: 'datos-analitica',
-      title: 'Datos e inteligencia de negocio',
-      summary: 'Convierte tus datos dispersos en tableros, indicadores y decisiones.',
+      id: 'ai',
+      name: 'NYV AI',
+      shortName: 'AI',
+      scope: 'Aplicaciones con inteligencia artificial y visión por computadora.',
       description:
-        'Integramos fuentes de información, modelamos almacenes de datos y construimos tableros ' +
-        'de control que responden las preguntas de la dirección. Incluimos gobierno de datos y ' +
-        'calidad desde el diseño.',
+        'Modelos aplicados a problemas concretos: detección y conteo con cámaras, clasificación de ' +
+        'documentos, asistentes sobre información propia y automatización de tareas repetitivas. ' +
+        'Cada modelo se entrega con métricas de desempeño y un plan de operación.',
       deliverables: [
-        'Almacenes de datos y procesos ETL',
-        'Tableros de indicadores (BI)',
-        'Modelos analíticos y predictivos',
-        'Definición y gobierno de indicadores',
+        'Visión por computadora en entornos reales',
+        'Asistentes y búsqueda sobre documentos propios',
+        'Automatización inteligente de procesos',
+        'Evaluación, monitoreo y gobierno de modelos',
       ],
-      icon: 'data',
     },
     {
-      id: 'integracion-sistemas',
-      title: 'Integración y modernización de sistemas',
-      summary: 'Conecta sistemas heredados con plataformas actuales sin detener la operación.',
+      id: 'data',
+      name: 'NYV Data',
+      shortName: 'Data',
+      scope: 'Análisis y procesamiento de datos, hospedaje y nube.',
       description:
-        'Diseñamos capas de integración, migramos aplicaciones heredadas y automatizamos flujos ' +
-        'entre sistemas para eliminar reprocesos y errores manuales.',
+        'Integramos fuentes dispersas, modelamos almacenes de datos y construimos tableros que ' +
+        'responden las preguntas de la dirección. Alojamos y operamos las plataformas en la nube, ' +
+        'con respaldos y monitoreo definidos desde el diseño.',
       deliverables: [
-        'Integración entre sistemas y servicios externos',
-        'Migración y modernización de aplicaciones',
-        'Automatización de procesos internos',
-        'Bases de datos: diseño, optimización y migración',
+        'Almacenes de datos y procesos de integración',
+        'Tableros de indicadores para la toma de decisiones',
+        'Hospedaje y operación de aplicaciones en la nube',
+        'Calidad y gobierno de datos',
       ],
-      icon: 'integration',
     },
     {
-      id: 'nube-devops',
-      title: 'Infraestructura en la nube y DevOps',
-      summary: 'Despliegues confiables, monitoreo y costos bajo control.',
+      id: 'consulting',
+      name: 'NYV Consulting',
+      shortName: 'Consulting',
+      scope: 'Consultoría informática, empresarial y de administración pública. Capacitación.',
       description:
-        'Implementamos infraestructura como código, contenedores y canalizaciones de integración ' +
-        'y despliegue continuo, con monitoreo y respaldos definidos desde el inicio.',
-      deliverables: [
-        'Arquitectura y migración a la nube',
-        'Contenedores y orquestación',
-        'Canalizaciones CI/CD',
-        'Monitoreo, respaldos y continuidad',
-      ],
-      icon: 'cloud',
-    },
-    {
-      id: 'soporte-mantenimiento',
-      title: 'Soporte y mantenimiento',
-      summary: 'Acompañamiento continuo para que tus sistemas sigan funcionando.',
-      description:
-        'Planes de soporte con tiempos de respuesta acordados, mantenimiento correctivo y ' +
-        'evolutivo, y actualizaciones de seguridad periódicas.',
-      deliverables: [
-        'Mesa de ayuda con niveles de servicio',
-        'Mantenimiento correctivo y evolutivo',
-        'Actualizaciones de seguridad',
-        'Revisiones periódicas de desempeño',
-      ],
-      icon: 'support',
-    },
-    {
-      id: 'consultoria-tecnologica',
-      title: 'Consultoría tecnológica',
-      summary: 'Una hoja de ruta tecnológica alineada con los objetivos del negocio.',
-      description:
-        'Evaluamos tu situación actual, priorizamos iniciativas y definimos una hoja de ruta ' +
-        'realista en alcance, tiempo y presupuesto. Acompañamos la toma de decisiones técnicas.',
+        'Diagnóstico, hoja de ruta y acompañamiento técnico para decisiones de tecnología. ' +
+        'Dominamos la planificación pública ecuatoriana, lo que nos permite alinear los sistemas ' +
+        'con los instrumentos de gestión del Estado. Incluye capacitación en informática.',
       deliverables: [
         'Diagnóstico de sistemas y procesos',
         'Hoja de ruta de transformación digital',
-        'Arquitectura de soluciones',
-        'Acompañamiento en selección de tecnología',
+        'Consultoría para administración pública',
+        'Capacitación técnica a equipos',
       ],
-      icon: 'strategy',
+    },
+    {
+      id: 'growth',
+      name: 'NYV Growth',
+      shortName: 'Growth',
+      scope: 'Socio tecnológico de largo plazo para nuevos negocios.',
+      description:
+        'Modelo growth partner: el socio aporta capital y relación con los clientes; NYV aporta ' +
+        'tecnología, desarrollo y alojamiento, con una cuota mensual. El negocio arranca con un ' +
+        'equipo técnico completo sin contratarlo.',
+      deliverables: [
+        'Producto digital desde la idea hasta la operación',
+        'Infraestructura y alojamiento incluidos',
+        'Evolución continua del producto',
+        'Modelo de pago mensual acordado',
+      ],
+    },
+    {
+      id: 'labs',
+      name: 'NYV Labs',
+      shortName: 'Labs',
+      scope: 'Investigación y desarrollo en ingeniería y tecnología.',
+      description:
+        'Investigación aplicada que alimenta al resto de las líneas: prototipos, pruebas de ' +
+        'concepto y publicaciones técnicas en inteligencia artificial, visión por computadora y ' +
+        'ciencia de datos.',
+      deliverables: [
+        'Prototipos y pruebas de concepto',
+        'Evaluación de tecnologías emergentes',
+        'Colaboración con academia e instituciones',
+        'Transferencia de resultados a productos',
+      ],
     },
   ],
-  valuePropositions: [
+  journey: [
     {
-      title: 'Enfoque en el negocio',
-      description:
-        'Cada proyecto empieza por entender el proceso y el resultado esperado, no por la herramienta.',
+      title: 'Diseña',
+      description: 'Entendemos el proceso, los usuarios y las restricciones antes de proponer.',
     },
     {
-      title: 'Calidad verificable',
-      description:
-        'Código revisado, pruebas automatizadas y documentación entregada con cada versión.',
+      title: 'Desarrolla',
+      description: 'Construimos en iteraciones cortas con estándares de calidad y seguridad.',
     },
     {
-      title: 'Seguridad desde el diseño',
-      description:
-        'Validación de entradas, mínimo privilegio y protección de datos en cada capa de la solución.',
+      title: 'Aloja',
+      description: 'Desplegamos en la nube, con respaldos, monitoreo y costos bajo control.',
+    },
+    {
+      title: 'Mantiene',
+      description: 'Actualizaciones, soporte y corrección de errores del desarrollo.',
+    },
+    {
+      title: 'Crece contigo',
+      description: 'Cuando el modelo lo permite, acompañamos como socio tecnológico.',
     },
   ],
-  process: [
+  caseStudy: {
+    client: 'TuSocio Visión',
+    sector: 'Visión por computadora para cafeterías',
+    summary:
+      'Plataforma de visión por computadora para cafeterías, el primer proyecto desplegado en la ' +
+      'infraestructura de NYV. TuSocio Visión aporta capital y relación con los clientes; NYV ' +
+      'aporta tecnología, desarrollo y alojamiento.',
+    model: 'Modelo growth partner',
+  },
+  standards: [
+    { code: 'ISO 9001', scope: 'Sistema de gestión de la calidad' },
+    { code: 'ISO/IEC 27001', scope: 'Seguridad de la información de clientes y plataformas' },
+    { code: 'ISO/IEC 25010', scope: 'Modelo de calidad del producto de software' },
+    { code: 'ISO/IEC/IEEE 12207', scope: 'Procesos del ciclo de vida del software' },
+    { code: 'ISO/IEC 42001', scope: 'Sistema de gestión de inteligencia artificial responsable' },
     {
-      title: 'Descubrimiento',
-      description: 'Entendemos el problema, los usuarios y las restricciones del proyecto.',
-    },
-    {
-      title: 'Diseño',
-      description: 'Definimos la arquitectura, el alcance y los criterios de aceptación.',
-    },
-    {
-      title: 'Construcción',
-      description: 'Desarrollamos en iteraciones cortas con demostraciones periódicas.',
-    },
-    {
-      title: 'Entrega y soporte',
-      description: 'Desplegamos, capacitamos a tu equipo y acompañamos la operación.',
+      code: 'ISO/IEC 20000-1',
+      scope: 'Gestión de servicios de TI: hospedaje, soporte y mantenimiento',
     },
   ],
   about: {
     intro:
-      'NYV S.A.S. es una empresa de tecnología que acompaña a organizaciones públicas y privadas ' +
-      'en el diseño, desarrollo y operación de sus sistemas de información.',
+      'NYV es una empresa ecuatoriana de desarrollo de software, inteligencia artificial, datos e ' +
+      'investigación, con sede en Ambato y vocación exportadora. Construye soluciones a medida ' +
+      'para empresas privadas e instituciones públicas, y las aloja y mantiene en la nube.',
+    nameStory:
+      'NYV significa Nexo y Visión. Nexo, porque conecta sistemas, datos y personas. Visión, ' +
+      'porque usa inteligencia artificial y análisis para ver más lejos. El nombre sigue el ' +
+      'modelo de marca corta y única: una casa madre, NYV, de la que derivan líneas especializadas.',
+    direction:
+      'NYV se posiciona como la empresa que observa y anticipa: convierte datos en visión y ' +
+      'decisiones.',
     mission:
-      'Construir soluciones tecnológicas confiables que simplifiquen la operación de nuestros ' +
-      'clientes y generen valor medible.',
+      'Diseñamos, desarrollamos y operamos soluciones de software, inteligencia artificial y ' +
+      'datos que convierten la información de empresas e instituciones públicas en decisiones y ' +
+      'resultados medibles. Trabajamos con estándares internacionales de calidad, seguridad de la ' +
+      'información y gestión de servicios, y acompañamos a cada cliente como socio tecnológico de ' +
+      'largo plazo, desde la idea hasta la operación en la nube.',
     vision:
-      'Ser el aliado tecnológico de referencia para las organizaciones de la región que buscan ' +
-      'crecer con base en datos y software de calidad.',
-    values: [
+      'Al 2031, ser la empresa ecuatoriana de referencia en inteligencia artificial y software a ' +
+      'medida para América Latina y Estados Unidos, reconocida por exportar soluciones de clase ' +
+      'mundial, por la madurez certificada de sus procesos y por generar innovación propia desde ' +
+      'la investigación aplicada.',
+    principles: [
       {
-        title: 'Transparencia',
-        description: 'Alcances claros, avances visibles y comunicación directa en cada etapa.',
+        title: 'Resultados medibles',
+        description:
+          'Cada proyecto se define por la decisión que habilita y el indicador que mueve.',
       },
       {
-        title: 'Rigor técnico',
-        description: 'Buenas prácticas de ingeniería aplicadas de forma consistente.',
+        title: 'Seguridad de la información',
+        description: 'Datos de clientes y plataformas protegidos desde el diseño, no al final.',
       },
       {
-        title: 'Compromiso',
-        description: 'Cumplimos lo acordado y asumimos la responsabilidad del resultado.',
+        title: 'Socio de largo plazo',
+        description: 'Acompañamos desde la idea hasta la operación, no solo hasta la entrega.',
       },
       {
-        title: 'Mejora continua',
-        description: 'Medimos, aprendemos y ajustamos para entregar cada vez mejor.',
+        title: 'Investigación aplicada',
+        description: 'Lo que aprendemos en NYV Labs se transfiere a productos y servicios.',
       },
     ],
+    operatingModel: [
+      'Operación 100 % en la nube, sin centro de datos propio.',
+      'Soluciones construidas con herramientas open source.',
+      'Los dominios, credenciales y activos digitales de cada cliente le pertenecen al cliente.',
+      'NYV implementa, entrega y luego mantiene; el cliente opera su sistema de forma independiente.',
+    ],
+    markets:
+      'Atendemos al mercado ecuatoriano, público y privado, y exportamos servicios con Estados ' +
+      'Unidos como mercado objetivo.',
   },
   contact: {
-    email: 'contacto@nyv.com.ec',
+    email: 'christian.nunez.dev.ds@gmail.com',
     city: 'Ambato',
+    region: 'Tungurahua',
     country: 'Ecuador',
-    schedule: 'Lunes a viernes, 08:30 a 17:30',
+    schedule: 'Lunes a viernes, 08:30 a 17:30 (GMT-5)',
   },
 };
 

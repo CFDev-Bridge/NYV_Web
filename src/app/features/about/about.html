@@ -1,65 +1,84 @@
 <section class="page-header">
   <div class="container">
-    <p class="page-header__eyebrow">Nosotros</p>
-    <h1 class="page-header__title">Quiénes somos</h1>
-    <p class="page-header__lead">{{ site.about.intro }}</p>
+    <h1 class="page-header__title">La empresa que observa y anticipa</h1>
+    <p class="page-header__lead lead">{{ site.about.intro }}</p>
   </div>
 </section>
 
-<section class="section" aria-labelledby="proposito-titulo">
-  <div class="container">
-    <app-section-heading headingId="proposito-titulo" eyebrow="Propósito" title="Misión y visión" />
-    <div class="grid grid--2">
-      <article class="statement">
-        <h3 class="statement__title">Misión</h3>
-        <p class="statement__text">{{ site.about.mission }}</p>
-      </article>
-      <article class="statement statement--accent">
-        <h3 class="statement__title">Visión</h3>
-        <p class="statement__text">{{ site.about.vision }}</p>
-      </article>
+<section class="section" aria-labelledby="nombre-titulo">
+  <div class="container name">
+    <div class="name__mark" aria-hidden="true">
+      <span class="name__letter">N</span>
+      <span class="name__letter name__letter--y">Y</span>
+      <span class="name__letter">V</span>
+    </div>
+    <div class="name__copy">
+      <h2 id="nombre-titulo">{{ site.nameMeaning }}</h2>
+      <p class="lead">{{ site.about.nameStory }}</p>
+      <blockquote class="name__direction">
+        <p>{{ site.about.direction }}</p>
+      </blockquote>
     </div>
   </div>
 </section>
 
-<section class="section section--alt" aria-labelledby="valores-titulo">
+<section class="section section--night" aria-labelledby="mision-titulo">
+  <div class="container purpose">
+    <article class="purpose__block" appReveal>
+      <h2 id="mision-titulo">Misión</h2>
+      <p>{{ site.about.mission }}</p>
+    </article>
+    <article class="purpose__block" appReveal [appRevealDelay]="120">
+      <h2>Visión 2031</h2>
+      <p>{{ site.about.vision }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="principios-titulo">
   <div class="container">
     <app-section-heading
-      headingId="valores-titulo"
-      eyebrow="Valores"
-      title="Lo que guía nuestro trabajo"
+      headingId="principios-titulo"
+      title="Lo que sostiene cada proyecto"
+      lead="Cuatro compromisos que se desprenden de la misión y se aplican en el trabajo diario."
     />
-    <dl class="values">
-      @for (value of site.about.values; track value.title) {
-        <div class="values__item">
-          <dt class="values__term">{{ value.title }}</dt>
-          <dd class="values__desc">{{ value.description }}</dd>
+    <dl class="principles">
+      @for (principle of site.about.principles; track principle.title; let i = $index) {
+        <div class="principles__item" appReveal [appRevealDelay]="i * 70">
+          <dt>{{ principle.title }}</dt>
+          <dd>{{ principle.description }}</dd>
         </div>
       }
     </dl>
   </div>
 </section>
 
-<section class="section" aria-labelledby="metodo-titulo">
+<section class="section section--tint" aria-labelledby="operacion-titulo">
+  <div class="container operation">
+    <div>
+      <h2 id="operacion-titulo">Cómo operamos</h2>
+      <p class="lead">{{ site.about.markets }}</p>
+    </div>
+    <ul class="operation__list">
+      @for (item of site.about.operatingModel; track item) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="estandares-titulo">
   <div class="container">
     <app-section-heading
-      headingId="metodo-titulo"
-      eyebrow="Método"
-      title="Cómo abordamos cada proyecto"
-      lead="Un camino en cuatro etapas, con puntos de control y entregables definidos."
+      headingId="estandares-titulo"
+      title="Estándares de referencia"
+      lead="Marcos internacionales que NYV adopta progresivamente y buscará certificar."
     />
-    <ol class="steps">
-      @for (step of site.process; track step.title) {
-        <li class="steps__item">
-          <h3 class="steps__title">{{ step.title }}</h3>
-          <p class="steps__text">{{ step.description }}</p>
-        </li>
-      }
-    </ol>
+    <app-standards-roadmap />
   </div>
 </section>
 
 <app-cta-banner
   title="Trabajemos juntos"
-  text="Si buscas un equipo técnico que entienda tu operación, conversemos sobre tu próximo proyecto."
+  text="Si buscas un socio tecnológico que entienda tu operación y la planificación pública, conversemos."
 />

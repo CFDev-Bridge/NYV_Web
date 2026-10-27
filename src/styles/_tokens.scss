@@ -1,31 +1,43 @@
 :root {
-  /* Paleta institucional: azul marino + verde azulado. */
-  --color-primary: #0b3c5d;
-  --color-primary-strong: #082b43;
-  --color-accent: #1fa8b5;
-  --color-accent-strong: #0b7a85;
-  --color-accent-soft: #e3f5f7;
+  /* Mundo visual "El Observatorio": papel cálido de día, noche profunda para los momentos clave. */
+  --paper: #f6f3ec;
+  --paper-2: #ece8dd;
+  --paper-3: #e1dccd;
+  --ink: #121b2b;
+  --ink-2: #46516a;
+  --ink-3: #6b7489;
+  --line: #d7d1c2;
+  --line-strong: #b9b2a1;
 
-  --color-surface: #ffffff;
-  --color-surface-alt: #f4f7fa;
-  --color-border: #d9e1e8;
-  --color-text: #1b2733;
-  --color-text-muted: #4d5d6c;
-  --color-on-primary: #ffffff;
-  --color-on-primary-muted: #c9d8e4;
-  --color-error: #b3261e;
-  --color-error-soft: #fdecea;
-  --color-success: #1e7b45;
-  --color-success-soft: #e6f4ec;
+  --night: #0b1526;
+  --night-2: #112038;
+  --night-3: #182b48;
+  --night-text: #eef2f7;
+  --night-muted: #a9b6c9;
+  --night-line: rgb(169 182 201 / 0.18);
 
-  --font-sans: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --signal: #0e9ab8;
+  --signal-text: #0a7a93;
+  --signal-bright: #3cc7e6;
+  --signal-soft: #daf0f5;
+  --signal-glow: rgb(60 199 230 / 0.35);
 
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 2rem;
+  --error: #b3261e;
+  --error-soft: #fbe9e7;
+  --success: #1e6b42;
+  --success-soft: #e3f2e9;
+
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.2rem;
+  --text-xl: 1.4rem;
+  --text-2xl: 1.8rem;
+  --text-3xl: clamp(2rem, 1.4rem + 2vw, 2.9rem);
+  --text-display: clamp(2.6rem, 1.5rem + 3.6vw, 4.75rem);
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -34,20 +46,28 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --space-7: 3rem;
-  --space-8: 4rem;
+  --space-8: 4.5rem;
+  --space-9: 6.5rem;
 
   --radius-sm: 0.375rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
 
-  --shadow-md: 0 10px 30px -12px rgb(11 60 93 / 0.25);
+  --shadow-sm: 0 2px 6px -2px rgb(18 27 43 / 0.12), 0 8px 20px -12px rgb(18 27 43 / 0.18);
+  --shadow-md: 0 6px 16px -8px rgb(18 27 43 / 0.2), 0 24px 48px -24px rgb(18 27 43 / 0.28);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 640ms;
 
   --gutter: 1rem;
-  --container-max: 72rem;
+  --container-max: 76rem;
+  --header-height: 4.5rem;
 }
 
 @media (min-width: 48rem) {
   :root {
-    --gutter: 2rem;
+    --gutter: 2.5rem;
   }
 }

@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./fonts/space-grotesk-latin.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -7,6 +23,8 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--line-strong) var(--paper);
+  accent-color: var(--signal);
 }
 
 body {
@@ -14,11 +32,22 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: 1.6;
-  color: var(--color-text);
-  background: var(--color-surface);
+  color: var(--ink);
+  background: var(--paper);
+  caret-color: var(--signal);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings:
+    'cv11',
+    'ss01',
+    'tnum' 0;
+}
+
+::selection {
+  background: var(--signal);
+  color: #fff;
 }
 
 app-root {
@@ -37,30 +66,38 @@ h2,
 h3,
 h4 {
   margin: 0 0 var(--space-3);
-  line-height: 1.2;
-  color: var(--color-primary-strong);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: inherit;
   text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(1.9rem, 1.2rem + 2.5vw, 3rem);
+  font-size: var(--text-display);
+  letter-spacing: -0.03em;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.25rem);
+  font-size: var(--text-3xl);
 }
 
 h3 {
   font-size: var(--text-xl);
+  line-height: 1.2;
 }
 
 p {
   margin: 0 0 var(--space-3);
+  text-wrap: pretty;
 }
 
 a {
-  color: var(--color-accent-strong);
+  color: var(--signal-text);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color var(--duration-fast) ease;
 }
 
 img,
@@ -78,8 +115,9 @@ textarea {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .visually-hidden {
@@ -101,8 +139,8 @@ textarea {
   z-index: 100;
   padding: var(--space-2) var(--space-4);
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
+  background: var(--ink);
+  color: var(--paper);
   font-weight: 600;
   text-decoration: none;
 

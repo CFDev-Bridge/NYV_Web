@@ -27,7 +27,7 @@ export class Contact {
 
   protected readonly site = inject(SITE_CONFIG);
   protected readonly status = signal<ContactStatus>('idle');
-  protected readonly subjects = [...this.site.services.map((s) => s.title), OTHER_SUBJECT];
+  protected readonly subjects = [...this.site.lines.map((line) => line.name), OTHER_SUBJECT];
 
   protected readonly form = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(80)]],
@@ -97,10 +97,10 @@ export class Contact {
   }
 
   private preselectSubjectFromQuery(): void {
-    const serviceId = this.route.snapshot.queryParamMap.get('servicio');
-    const service = this.site.services.find((s) => s.id === serviceId);
-    if (service) {
-      this.form.controls.subject.setValue(service.title);
+    const lineId = this.route.snapshot.queryParamMap.get('linea');
+    const line = this.site.lines.find((candidate) => candidate.id === lineId);
+    if (line) {
+      this.form.controls.subject.setValue(line.name);
     }
   }
 

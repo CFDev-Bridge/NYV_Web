@@ -62,7 +62,7 @@ function fillValidForm(el: HTMLElement): void {
   fill(el, '#correo', 'Ana.Perez@Empresa.com ');
   fill(el, '#telefono', '+593 99 123 4567');
   fill(el, '#empresa', 'Empresa Ejemplo');
-  fill(el, '#asunto', SITE_CONTENT.services[0].title);
+  fill(el, '#asunto', SITE_CONTENT.lines[0].name);
   fill(el, '#mensaje', VALID_MESSAGE);
   check(el, '#consentimiento');
 }
@@ -108,7 +108,7 @@ describe('Contact', () => {
         email: 'ana.perez@empresa.com',
         phone: '+593 99 123 4567',
         company: 'Empresa Ejemplo',
-        subject: SITE_CONTENT.services[0].title,
+        subject: SITE_CONTENT.lines[0].name,
         message: VALID_MESSAGE,
       },
     ]);
@@ -138,16 +138,16 @@ describe('Contact', () => {
     expect(el.querySelector('.alert--success')).not.toBeNull();
   });
 
-  it('preselects the subject from the "servicio" query parameter', async () => {
-    const service = SITE_CONTENT.services[2];
-    const { el } = await setup({ servicio: service.id });
+  it('preselects the subject from the "linea" query parameter', async () => {
+    const line = SITE_CONTENT.lines[2];
+    const { el } = await setup({ linea: line.id });
 
     const select = el.querySelector<HTMLSelectElement>('#asunto');
-    expect(select?.value).toBe(service.title);
+    expect(select?.value).toBe(line.name);
   });
 
-  it('ignores an unknown "servicio" query parameter', async () => {
-    const { el } = await setup({ servicio: '<script>alert(1)</script>' });
+  it('ignores an unknown "linea" query parameter', async () => {
+    const { el } = await setup({ linea: '<script>alert(1)</script>' });
 
     const select = el.querySelector<HTMLSelectElement>('#asunto');
     expect(select?.value).toBe('');
