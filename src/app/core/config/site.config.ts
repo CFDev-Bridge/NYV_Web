@@ -171,6 +171,25 @@ export const SITE_CONTENT: SiteConfig = {
       { label: 'Estado', value: 'En producción' },
     ],
   },
+  experience: [
+    {
+      id: 'poa',
+      name: 'Sistema POA',
+      clientType: 'Gobierno autónomo descentralizado municipal',
+      period: '2023 · en operación',
+      summary:
+        'Plataforma web para formular, alinear y dar seguimiento al Plan Operativo Anual de un ' +
+        'gobierno municipal. Cada dependencia registra sus actividades, metas y presupuesto ' +
+        'alineados con el PDOT, el PEI y el Plan Nacional de Desarrollo; la plataforma controla ' +
+        'las reformas, consolida el avance físico y presupuestario y genera los reportes de ' +
+        'seguimiento y rendición de cuentas.',
+      stack: ['Oracle APEX', 'Oracle Database', 'PL/SQL', 'JavaScript'],
+      lines: ['software', 'data', 'consulting'],
+    },
+  ],
+  experienceNote:
+    'Sistemas construidos por el equipo fundador antes de la constitución de NYV. Se omite el ' +
+    'nombre de las instituciones por confidencialidad.',
   standards: [
     { code: 'ISO 9001', scope: 'Sistema de gestión de la calidad' },
     { code: 'ISO/IEC 27001', scope: 'Seguridad de la información de clientes y plataformas' },

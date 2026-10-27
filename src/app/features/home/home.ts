@@ -32,6 +32,11 @@ export class Home {
 
   private readonly cards = viewChild<ElementRef<HTMLElement>>('cards');
 
+  /** Nombre corto de una línea a partir de su identificador. */
+  protected lineName(lineId: string): string {
+    return this.site.lines.find((line) => line.id === lineId)?.shortName ?? lineId;
+  }
+
   /** Desplaza el carrusel de líneas una tarjeta en la dirección indicada. */
   protected scrollCards(direction: -1 | 1): void {
     const track = this.cards()?.nativeElement;

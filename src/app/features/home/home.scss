@@ -467,55 +467,59 @@
   max-width: 30ch;
 }
 
-/* ---- Caso ---- */
-.case {
+/* ---- Proyectos y experiencia ---- */
+.projects__head .section-head {
+  max-width: 66ch;
+}
+
+.projects {
   display: grid;
-  gap: var(--space-6);
-  align-items: start;
+  gap: var(--space-5);
 }
 
-.case__intro h2 {
-  max-width: 16ch;
-}
-
-.case__card {
+.project {
+  display: flex;
+  flex-direction: column;
   padding: var(--space-6);
 }
 
-.case__head {
+.project__head {
   display: flex;
   align-items: center;
   gap: var(--space-4);
   margin-bottom: var(--space-4);
 }
 
-.case__glyph {
+.project__glyph {
+  flex-shrink: 0;
   width: 3.25rem;
   height: 3.25rem;
   color: var(--night-muted);
 }
 
-.case__client {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
+.project__kicker {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-xs);
   font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--signal-bright);
+}
+
+.project__name {
+  margin: 0;
+  font-size: var(--text-2xl);
   letter-spacing: -0.02em;
 }
 
-.case__sector {
-  margin: 0;
-  color: var(--signal-bright);
-  font-weight: 500;
-}
-
-.case__summary {
+.project__summary {
   margin: 0 0 var(--space-5);
   color: var(--night-muted);
+  flex: 1;
 }
 
-.case__facts {
-  grid-template-columns: repeat(2, 1fr);
+.project__facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-bottom: var(--space-5);
   padding-top: var(--space-4);
   border-top: 1px solid var(--night-line);
@@ -523,6 +527,34 @@
   dd {
     font-size: var(--text-base);
   }
+}
+
+.project__lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .tag {
+    text-decoration: none;
+    transition:
+      border-color var(--duration-fast) ease,
+      color var(--duration-fast) ease;
+
+    &:hover {
+      border-color: var(--signal-bright);
+      color: var(--signal-bright);
+    }
+  }
+}
+
+.projects__note {
+  margin: var(--space-5) 0 0;
+  font-size: var(--text-sm);
+  color: var(--night-muted);
+  max-width: 70ch;
 }
 
 /* ---- Madurez ---- */
@@ -546,8 +578,8 @@
 }
 
 @media (min-width: 48rem) {
-  .case {
-    grid-template-columns: 1fr 1.2fr;
+  .projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .maturity__head {

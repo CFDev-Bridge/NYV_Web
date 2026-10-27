@@ -192,46 +192,81 @@
   </div>
 </section>
 
-<section class="section section--night" aria-labelledby="caso-titulo">
-  <div class="container case">
-    <div class="case__intro">
-      <h2 id="caso-titulo">Primer proyecto en producción</h2>
-      <p class="lead">
-        El modelo growth partner ya opera: un socio aporta el mercado y NYV aporta la tecnología
-        completa, del desarrollo al alojamiento.
-      </p>
+<section class="section section--night" aria-labelledby="proyectos-titulo">
+  <div class="container">
+    <div class="projects__head">
+      <app-section-heading
+        headingId="proyectos-titulo"
+        title="Proyectos y experiencia"
+        lead="Lo que ya está en producción con NYV y los sistemas que el equipo fundador construyó antes, en el sector público ecuatoriano."
+      />
     </div>
-    <article class="case__card panel" appReveal>
-      <header class="case__head">
-        <app-line-glyph lineId="ai" class="case__glyph" />
-        <div>
-          <p class="case__client">{{ site.caseStudy.client }}</p>
-          <p class="case__sector">{{ site.caseStudy.sector }}</p>
-        </div>
-      </header>
-      <p class="case__summary">{{ site.caseStudy.summary }}</p>
-      <dl class="readout case__facts">
-        @for (fact of site.caseStudy.facts; track fact.label) {
+    <div class="projects">
+      <article class="project panel" appReveal>
+        <header class="project__head">
+          <app-line-glyph lineId="ai" class="project__glyph" />
           <div>
-            <dt>{{ fact.label }}</dt>
-            <dd>{{ fact.value }}</dd>
+            <p class="project__kicker">NYV · {{ site.caseStudy.model }}</p>
+            <h3 class="project__name">{{ site.caseStudy.client }}</h3>
           </div>
-        }
-      </dl>
-      <a routerLink="/servicios" fragment="growth" class="link-arrow">
-        Cómo funciona NYV Growth
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path
-            d="M5 12h14M13 6l6 6-6 6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </a>
-    </article>
+        </header>
+        <p class="project__summary">{{ site.caseStudy.summary }}</p>
+        <dl class="readout project__facts">
+          @for (fact of site.caseStudy.facts; track fact.label) {
+            <div>
+              <dt>{{ fact.label }}</dt>
+              <dd>{{ fact.value }}</dd>
+            </div>
+          }
+        </dl>
+        <a routerLink="/servicios" fragment="growth" class="link-arrow">
+          Cómo funciona NYV Growth
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </article>
+
+      @for (project of site.experience; track project.id; let i = $index) {
+        <article class="project panel" appReveal [appRevealDelay]="(i + 1) * 90">
+          <header class="project__head">
+            <app-line-glyph [lineId]="project.lines[0]" class="project__glyph" />
+            <div>
+              <p class="project__kicker">Equipo fundador · {{ project.period }}</p>
+              <h3 class="project__name">{{ project.name }}</h3>
+            </div>
+          </header>
+          <p class="project__summary">{{ project.summary }}</p>
+          <dl class="readout project__facts">
+            <div>
+              <dt>Cliente</dt>
+              <dd>{{ project.clientType }}</dd>
+            </div>
+            <div>
+              <dt>Tecnologías</dt>
+              <dd>{{ project.stack.join(' · ') }}</dd>
+            </div>
+          </dl>
+          <ul class="project__lines" aria-label="Líneas relacionadas">
+            @for (lineId of project.lines; track lineId) {
+              <li>
+                <a routerLink="/servicios" [fragment]="lineId" class="tag"
+                  >NYV {{ lineName(lineId) }}</a
+                >
+              </li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+    <p class="projects__note">{{ site.experienceNote }}</p>
   </div>
 </section>
 

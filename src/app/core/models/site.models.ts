@@ -39,6 +39,18 @@ export interface CaseStudy {
   readonly facts: readonly LabelValue[];
 }
 
+/** Proyecto de experiencia del equipo fundador, anonimizado por confidencialidad. */
+export interface ExperienceProject {
+  readonly id: string;
+  readonly name: string;
+  readonly clientType: string;
+  readonly period: string;
+  readonly summary: string;
+  readonly stack: readonly string[];
+  /** Identificadores de las líneas NYV relacionadas. */
+  readonly lines: readonly string[];
+}
+
 export interface Principle {
   readonly title: string;
   readonly description: string;
@@ -69,6 +81,9 @@ export interface SiteConfig {
   readonly lines: readonly BusinessLine[];
   readonly journey: readonly JourneyStep[];
   readonly caseStudy: CaseStudy;
+  readonly experience: readonly ExperienceProject[];
+  /** Aclaración que acompaña siempre a la experiencia del equipo fundador. */
+  readonly experienceNote: string;
   readonly standards: readonly Standard[];
   readonly about: {
     readonly intro: string;
